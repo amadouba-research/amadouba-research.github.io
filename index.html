@@ -12,10 +12,10 @@
       <div class="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
         <a href="#home" class="font-extrabold tracking-tight text-2xl text-white">Amadou Ba</a>
         <nav class="hidden md:flex items-center gap-10 text-sm font-medium">
-          <a href="#home" data-i18n="nav.home" class="hover:text-sky-400 transition-colors">Accueil</a>
-          <a href="#research" data-i18n="nav.research" class="hover:text-sky-400 transition-colors">Recherche</a>
-          <a href="#teaching" data-i18n="nav.teaching" class="hover:text-sky-400 transition-colors">Enseignement</a>
-          <a href="#cv" data-i18n="nav.cv" class="hover:text-sky-400 transition-colors">CV</a>
+          <a href="#home" data-i18n="nav.home" class="hover:text-sky-400 transition-colors nav-link">Accueil</a>
+          <a href="#research" data-i18n="nav.research" class="hover:text-sky-400 transition-colors nav-link">Recherche</a>
+          <a href="#teaching" data-i18n="nav.teaching" class="hover:text-sky-400 transition-colors nav-link">Enseignement</a>
+          <a href="#cv" data-i18n="nav.cv" class="hover:text-sky-400 transition-colors nav-link">CV</a>
         </nav>
         <div class="flex items-center gap-2">
           <label for="lang-select" class="sr-only">Langue</label>
@@ -49,8 +49,8 @@
       </div>
     </section>
 
-    <!-- Recherche -->
-    <section id="research" class="mx-auto max-w-6xl px-6 py-28 border-t border-gray-800">
+    <!-- Recherche (masquée par défaut) -->
+    <section id="research" class="hidden mx-auto max-w-6xl px-6 py-28 border-t border-gray-800">
       <h2 class="text-3xl font-bold text-white mb-12" data-i18n="research.title">Recherche</h2>
       <div class="space-y-12">
         <div class="p-8 rounded-2xl bg-gray-900/70 border border-gray-800 shadow-md">
@@ -67,8 +67,8 @@
       </div>
     </section>
 
-    <!-- Enseignement -->
-    <section id="teaching" class="mx-auto max-w-6xl px-6 py-28 border-t border-gray-800">
+    <!-- Enseignement (masquée par défaut) -->
+    <section id="teaching" class="hidden mx-auto max-w-6xl px-6 py-28 border-t border-gray-800">
       <h2 class="text-3xl font-bold text-white mb-12" data-i18n="teaching.title">Enseignement</h2>
       <div class="grid md:grid-cols-2 gap-6">
         <div class="p-8 rounded-2xl bg-gray-900/70 border border-gray-800 shadow-md">
@@ -88,8 +88,8 @@
       </div>
     </section>
 
-    <!-- CV -->
-    <section id="cv" class="mx-auto max-w-6xl px-6 py-28 border-t border-gray-800">
+    <!-- CV (masquée par défaut) -->
+    <section id="cv" class="hidden mx-auto max-w-6xl px-6 py-28 border-t border-gray-800">
       <h2 class="text-3xl font-bold text-white mb-12" data-i18n="cv.title">CV</h2>
       <div class="p-8 rounded-2xl bg-gray-900/70 border border-gray-800 shadow-md">
         <p class="text-gray-300" data-i18n="cv.text"></p>
@@ -154,7 +154,7 @@
             project: "Macroeconomic and institutional factors on crowdfunding in emerging markets (with Maher Kooli).",
             publication: "Publication",
             pubtitle: "Determinants of capital structure: Evidence from listed firms on the BRVM",
-            pubcontent: "Modigliani and Miller (1958) laid the foundation for research on firms’ capital structure, showing that under certain assumptions firm value is independent of leverage. Subsequent theories contributed to the debate — notably the trade-off theory, pecking order, and market timing. This article tests the validity of these three theories on the West African regional stock exchange (BRVM). Using panel data on 30 listed firms over five years, we find support for the trade-off theory, no support for the pecking-order theory, and mixed evidence on market timing."
+            pubcontent: "The work of Modigliani and Miller (1958) is the starting point for research on the financial structure of firms. They show that under certain assumptions, the value of the firm is independent of its financial structure. Several theoretical frameworks have emerged to contribute to this debate. This is the case of the trade-off theory, hierarchical financing and market timing. The objective of this article is to see the validity of these three theories at the level of the market of the Bourse Régionale des Valeurs Mobilières. We used panel data as a methodology to process data on a sample of 30 firms listed on the regional stock exchange over a period of 5 years. The results show that the trade-off theory is validated, the hierarchical financing theory is not, while the market timing results are inconclusive."
           },
           teaching: {
             title: "Teaching",
@@ -169,6 +169,7 @@
           }
         }
       };
+
       function setLang(lang) {
         document.documentElement.lang = lang;
         document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -180,10 +181,59 @@
         const sel = document.getElementById('lang-select');
         if (sel && sel.value !== lang) sel.value = lang;
       }
-      document.getElementById('lang-select').addEventListener('change', (e) => {
-        setLang(e.target.value);
+
+      // Single-page navigation: show only the requested section
+      const sections = ['home','research','teaching','cv'];
+      function showSection(id) {
+        sections.forEach(s => {
+          const el = document.getElementById(s);
+          if (!el) return;
+          if (s === id) {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        });
+        // update URL hash without jumping
+        if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
+        // update nav active state (optional subtle style)
+        document.querySelectorAll('.nav-link').forEach(a => {
+          const target = a.getAttribute('href').slice(1);
+          if (target === id) {
+            a.classList.add('text-sky-400');
+          } else {
+            a.classList.remove('text-sky-400');
+          }
+        });
+        // ensure header stays visible
+        window.scrollTo({ top: 0 });
+      }
+
+      // Hook nav links
+      document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          const id = a.getAttribute('href').slice(1);
+          showSection(id);
+        });
       });
+
+      // Handle direct links (e.g., /#research) and default to home
+      function initSections() {
+        const hash = location.hash.replace('#','');
+        const initial = sections.includes(hash) ? hash : 'home';
+        showSection(initial);
+      }
+
+      // Initialize language and sections
       setLang('fr');
+      initSections();
+
+      // Keep in sync on hash manual change
+      window.addEventListener('hashchange', () => {
+        const hash = location.hash.replace('#','');
+        if (sections.includes(hash)) showSection(hash);
+      });
     </script>
   </body>
 </html>
