@@ -6,43 +6,42 @@
     <title>Amadou Ba</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 text-gray-100 font-serif">
+  <body class="min-h-screen bg-gradient-to-b from-slate-50 via-slate-100 to-slate-50 text-slate-800 font-sans">
     <!-- Header -->
-    <header class="sticky top-0 z-50 backdrop-blur bg-gray-950/95 border-b border-gray-800 shadow-lg">
+    <header class="sticky top-0 z-50 backdrop-blur bg-white/95 border-b border-slate-200 shadow">
       <div class="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-        <a href="#home" class="font-extrabold tracking-tight text-2xl text-white">Amadou Ba</a>
+        <a href="#home" class="font-extrabold tracking-tight text-2xl text-slate-900">Amadou Ba</a>
         <nav class="hidden md:flex items-center gap-10 text-sm font-medium">
-          <a href="#home" data-i18n="nav.home" class="hover:text-sky-400 transition-colors nav-link">Accueil</a>
-          <a href="#research" data-i18n="nav.research" class="hover:text-sky-400 transition-colors nav-link">Recherche</a>
-          <a href="#teaching" data-i18n="nav.teaching" class="hover:text-sky-400 transition-colors nav-link">Enseignement</a>
-          <a href="#cv" data-i18n="nav.cv" class="hover:text-sky-400 transition-colors nav-link">CV</a>
+          <a href="#home" data-i18n="nav.home" class="hover:text-sky-700 transition-colors nav-link text-slate-700">Accueil</a>
+          <a href="#research" data-i18n="nav.research" class="hover:text-sky-700 transition-colors nav-link text-slate-700">Recherche</a>
+          <a href="#teaching" data-i18n="nav.teaching" class="hover:text-sky-700 transition-colors nav-link text-slate-700">Enseignement</a>
+          <a href="#cv" data-i18n="nav.cv" class="hover:text-sky-700 transition-colors nav-link text-slate-700">CV</a>
         </nav>
         <div class="flex items-center gap-2">
-          <label for="lang-select" class="sr-only">Langue</label>
-          <select id="lang-select" class="bg-gray-800/80 border border-gray-700 text-sm rounded-lg px-3 py-1 focus:outline-none focus:ring-2 focus:ring-sky-600">
-            <option value="fr">FR</option>
-            <option value="en">EN</option>
-          </select>
+          <div class="flex items-center gap-1 rounded-xl border border-slate-300 p-1 bg-white">
+            <button id="btn-fr" class="px-3 py-1 rounded-lg text-sm font-medium bg-sky-600 text-white">FR</button>
+            <button id="btn-en" class="px-3 py-1 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100">EN</button>
+          </div>
         </div>
       </div>
     </header>
 
     <!-- Accueil -->
     <section id="home" class="relative overflow-hidden">
-      <div class="mx-auto max-w-6xl px-6 py-32 flex flex-col md:flex-row gap-12 items-center">
+      <div class="mx-auto max-w-6xl px-6 py-28 flex flex-col md:flex-row gap-12 items-center">
         <!-- Photo -->
         <div class="flex-1 flex justify-center md:justify-start items-center order-1 md:order-none">
-          <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-gray-700 shadow-2xl">
+          <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-slate-300 shadow-xl">
             <img src="unnamed.jpg" alt="Photo de Amadou Ba" class="object-cover w-full h-full" />
           </div>
         </div>
         <!-- Texte -->
         <div class="flex-1 flex flex-col justify-center">
-          <h1 class="text-5xl font-extrabold tracking-tight leading-tight text-white">Amadou Ba</h1>
-          <p class="mt-6 text-lg text-gray-300 max-w-xl" data-i18n="hero.subtitle"></p>
-          <p class="mt-4 text-gray-300 max-w-xl" data-i18n="hero.bio"></p>
-          <div class="mt-6 text-base text-gray-400">
-            <strong data-i18n="hero.interestsLabel" class="text-white"></strong>
+          <h1 class="text-5xl font-extrabold tracking-tight leading-tight text-slate-900">Amadou Ba</h1>
+          <p class="mt-6 text-lg text-slate-700 max-w-xl" data-i18n="hero.subtitle"></p>
+          <p class="mt-4 text-slate-700 max-w-xl" data-i18n="hero.bio"></p>
+          <div class="mt-6 text-base text-slate-600">
+            <strong data-i18n="hero.interestsLabel" class="text-slate-900"></strong>
             <span data-i18n="hero.topics"></span>
           </div>
         </div>
@@ -50,62 +49,60 @@
     </section>
 
     <!-- Recherche (masquée par défaut) -->
-    <section id="research" class="hidden mx-auto max-w-6xl px-6 py-28 border-t border-gray-800">
-      <h2 class="text-3xl font-bold text-white mb-12" data-i18n="research.title">Recherche</h2>
-      <div class="space-y-12">
-        <div class="p-8 rounded-2xl bg-gray-900/70 border border-gray-800 shadow-md">
-          <h3 class="text-xl font-semibold text-sky-400" data-i18n="research.current">Travaux en cours</h3>
-          <hr class="my-4 border-gray-700" />
-          <p class="text-gray-300 leading-relaxed italic" data-i18n="research.project"></p>
+    <section id="research" class="hidden mx-auto max-w-6xl px-6 py-24 border-t border-slate-200">
+      <h2 class="text-3xl font-bold text-slate-900 mb-10" data-i18n="research.title">Recherche</h2>
+      <div class="space-y-8">
+        <div class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="text-xl font-semibold text-slate-900" data-i18n="research.current">Travaux en cours</h3>
+          <hr class="my-4 border-slate-200" />
+          <p class="text-slate-700 leading-relaxed italic" data-i18n="research.project"></p>
         </div>
-        <div class="p-8 rounded-2xl bg-gray-900/70 border border-gray-800 shadow-md">
-          <h3 class="text-xl font-semibold text-sky-400" data-i18n="research.publication">Publication</h3>
-          <p class="mt-2 text-gray-400 text-sm italic" data-i18n="research.pubtitle"></p>
-          <hr class="my-4 border-gray-700" />
-          <p class="text-gray-300 leading-relaxed" data-i18n="research.pubcontent"></p>
+        <div class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="text-xl font-semibold text-slate-900" data-i18n="research.publication">Publication</h3>
+          <p class="mt-2 text-slate-500 text-sm italic" data-i18n="research.pubtitle"></p>
+          <hr class="my-4 border-slate-200" />
+          <p class="text-slate-700 leading-relaxed" data-i18n="research.pubcontent"></p>
         </div>
       </div>
     </section>
 
     <!-- Enseignement (masquée par défaut) -->
-    <section id="teaching" class="hidden mx-auto max-w-6xl px-6 py-28 border-t border-gray-800">
-      <h2 class="text-3xl font-bold text-white mb-12" data-i18n="teaching.title">Enseignement</h2>
+    <section id="teaching" class="hidden mx-auto max-w-6xl px-6 py-24 border-t border-slate-200">
+      <h2 class="text-3xl font-bold text-slate-900 mb-10" data-i18n="teaching.title">Enseignement</h2>
       <div class="grid md:grid-cols-2 gap-6">
-        <div class="p-8 rounded-2xl bg-gray-900/70 border border-gray-800 shadow-md">
+        <div class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm">
           <div class="flex items-start justify-between">
-            <h3 class="text-lg font-semibold text-white" data-i18n="teaching.ugb">Université Gaston Berger (UGB), Sénégal</h3>
-            <span class="text-sm text-gray-400">Janv. 2019 – Nov. 2020</span>
+            <h3 class="text-lg font-semibold text-slate-900" data-i18n="teaching.ugb">Université Gaston Berger (UGB), Sénégal</h3>
+            <span class="text-sm text-slate-500">Janv. 2019 – Nov. 2020</span>
           </div>
-          <p class="mt-2 text-gray-300" data-i18n="teaching.role1"></p>
+          <p class="mt-2 text-slate-700" data-i18n="teaching.role1"></p>
         </div>
-        <div class="p-8 rounded-2xl bg-gray-900/70 border border-gray-800 shadow-md">
+        <div class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm">
           <div class="flex items-start justify-between">
-            <h3 class="text-lg font-semibold text-white" data-i18n="teaching.ugb">Université Gaston Berger (UGB), Sénégal</h3>
-            <span class="text-sm text-gray-400">Oct. 2017 – Juil. 2019</span>
+            <h3 class="text-lg font-semibold text-slate-900" data-i18n="teaching.ugb">Université Gaston Berger (UGB), Sénégal</h3>
+            <span class="text-sm text-slate-500">Oct. 2017 – Juil. 2019</span>
           </div>
-          <p class="mt-2 text-gray-300" data-i18n="teaching.role2"></p>
+          <p class="mt-2 text-slate-700" data-i18n="teaching.role2"></p>
         </div>
       </div>
     </section>
 
     <!-- CV (masquée par défaut) -->
-    <section id="cv" class="hidden mx-auto max-w-6xl px-6 py-28 border-t border-gray-800">
-      <h2 class="text-3xl font-bold text-white mb-12" data-i18n="cv.title">CV</h2>
-      <div class="p-8 rounded-2xl bg-gray-900/70 border border-gray-800 shadow-md">
-        <p class="text-gray-300" data-i18n="cv.text"></p>
+    <section id="cv" class="hidden mx-auto max-w-6xl px-6 py-24 border-t border-slate-200">
+      <h2 class="text-3xl font-bold text-slate-900 mb-10" data-i18n="cv.title">CV</h2>
+      <div class="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm">
+        <p class="text-slate-700" data-i18n="cv.text"></p>
         <div class="mt-6 flex flex-wrap items-center gap-3">
-          <a href="CV%20Amadou.pdf" target="_blank" rel="noreferrer" class="px-5 py-2.5 rounded-xl bg-sky-600 text-white font-medium hover:bg-sky-500 shadow" data-i18n="cv.button"></a>
-          <span class="text-xs text-gray-400" data-i18n="cv.update"></span>
+          <a href="CV%20Amadou.pdf" download class="px-5 py-2.5 rounded-xl bg-sky-700 text-white font-medium hover:bg-sky-800 shadow-sm" data-i18n="cv.button"></a>
+          <span class="text-xs text-slate-500" data-i18n="cv.update"></span>
         </div>
-        <div class="mt-8 rounded-xl overflow-hidden border border-gray-800 bg-gray-950/50">
-          <iframe src="CV%20Amadou.pdf" title="CV — Aperçu PDF" class="w-full h-[70vh]"></iframe>
-        </div>
+        <!-- Aperçu retiré à la demande : lien téléchargeable uniquement -->
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="mt-20 border-t border-gray-800 bg-gray-950">
-      <div class="mx-auto max-w-6xl px-6 py-8 text-sm text-gray-500 flex flex-col md:flex-row items-center justify-between gap-3">
+    <footer class="mt-16 border-t border-slate-200 bg-white/80">
+      <div class="mx-auto max-w-6xl px-6 py-8 text-sm text-slate-600 flex flex-col md:flex-row items-center justify-between gap-3">
         <div>© 2025 Amadou Ba</div>
       </div>
     </footer>
@@ -178,8 +175,21 @@
           for (const p of path) val = val && val[p];
           if (typeof val === 'string') el.textContent = val;
         });
-        const sel = document.getElementById('lang-select');
-        if (sel && sel.value !== lang) sel.value = lang;
+        localStorage.setItem('lang', lang);
+        // toggle active button style
+        const frBtn = document.getElementById('btn-fr');
+        const enBtn = document.getElementById('btn-en');
+        if (lang === 'fr') {
+          frBtn.classList.add('bg-sky-600','text-white');
+          frBtn.classList.remove('text-slate-700');
+          enBtn.classList.remove('bg-sky-600','text-white');
+          enBtn.classList.add('text-slate-700');
+        } else {
+          enBtn.classList.add('bg-sky-600','text-white');
+          enBtn.classList.remove('text-slate-700');
+          frBtn.classList.remove('bg-sky-600','text-white');
+          frBtn.classList.add('text-slate-700');
+        }
       }
 
       // Single-page navigation: show only the requested section
@@ -194,18 +204,15 @@
             el.classList.add('hidden');
           }
         });
-        // update URL hash without jumping
         if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
-        // update nav active state (optional subtle style)
         document.querySelectorAll('.nav-link').forEach(a => {
           const target = a.getAttribute('href').slice(1);
           if (target === id) {
-            a.classList.add('text-sky-400');
+            a.classList.add('text-sky-700');
           } else {
-            a.classList.remove('text-sky-400');
+            a.classList.remove('text-sky-700');
           }
         });
-        // ensure header stays visible
         window.scrollTo({ top: 0 });
       }
 
@@ -218,22 +225,23 @@
         });
       });
 
-      // Handle direct links (e.g., /#research) and default to home
-      function initSections() {
-        const hash = location.hash.replace('#','');
-        const initial = sections.includes(hash) ? hash : 'home';
-        showSection(initial);
-      }
-
       // Initialize language and sections
-      setLang('fr');
-      initSections();
+      const savedLang = localStorage.getItem('lang') || 'fr';
+      setLang(savedLang);
+      const hash = location.hash.replace('#','');
+      const initial = sections.includes(hash) ? hash : 'home';
+      showSection(initial);
 
-      // Keep in sync on hash manual change
+      // Hash change sync
       window.addEventListener('hashchange', () => {
-        const hash = location.hash.replace('#','');
-        if (sections.includes(hash)) showSection(hash);
+        const h = location.hash.replace('#','');
+        if (sections.includes(h)) showSection(h);
       });
+
+      // Language buttons
+      document.getElementById('btn-fr').addEventListener('click', () => setLang('fr'));
+      document.getElementById('btn-en').addEventListener('click', () => setLang('en'));
     </script>
   </body>
 </html>
+
