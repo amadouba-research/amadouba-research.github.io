@@ -29,7 +29,7 @@
     <main class="flex-1">
       <!-- Accueil -->
       <section id="home" class="relative overflow-hidden">
-        <div class="mx-auto max-w-6xl px-6 py-28 flex flex-col md:flex-row gap-12 items-center">
+        <div class="mx-auto max-w-6xl px-6 py-24 md:py-28 flex flex-col md:flex-row gap-12 items-center">
           <!-- Photo -->
           <div class="flex-1 flex justify-center md:justify-start items-center order-1 md:order-none">
             <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-slate-300 shadow-xl">
@@ -44,6 +44,13 @@
             <div class="mt-6 text-base text-slate-700">
               <strong data-i18n="hero.interestsLabel" class="text-slate-900"></strong>
               <span data-i18n="hero.topics"></span>
+            </div>
+            <!-- Highlight / Accroche actualisable -->
+            <div class="mt-8 w-full">
+              <div class="rounded-xl bg-sky-50 border border-sky-200 p-4 shadow-sm">
+                <p class="text-sm text-sky-900 font-medium" data-i18n="highlight"></p>
+                <p class="text-xs text-sky-800/80 mt-2"><span data-i18n="news.updated"></span> <span id="highlight-date" data-date="2025-08-19"></span></p>
+              </div>
             </div>
           </div>
         </div>
@@ -118,6 +125,8 @@
             interestsLabel: "Domaines de recherche :",
             topics: "financement participatif (crowdfunding), FinTech, capital‑risque, structure financière."
           },
+          highlight: "Actualité : Avancées récentes sur le projet crowdfunding dans les marchés émergents (avec Maher Kooli).",
+          news: { updated: "Mise à jour :" },
           research: {
             title: "Recherche",
             current: "Travaux en cours",
@@ -133,7 +142,7 @@
           },
           cv: {
             title: "CV",
-            text: "Téléchargez mon CV académique au format PDF.",
+            text: "Ouvrez mon CV en PDF dans un nouvel onglet.",
             button: "Ouvrir le CV (PDF)",
             update: "Dernière mise à jour : 2025"
           }
@@ -146,6 +155,8 @@
             interestsLabel: "Research interests:",
             topics: "crowdfunding, FinTech, venture capital, capital structure."
           },
+          highlight: "Update: Recent progress on the crowdfunding project in emerging markets (with Maher Kooli).",
+          news: { updated: "Updated:" },
           research: {
             title: "Research",
             current: "Ongoing Work",
@@ -161,7 +172,7 @@
           },
           cv: {
             title: "CV",
-            text: "Download my academic CV in PDF format.",
+            text: "Open my academic CV (PDF) in a new tab.",
             button: "Open CV (PDF)",
             update: "Last updated: 2025"
           }
@@ -177,47 +188,48 @@
           if (typeof val === 'string') el.textContent = val;
         });
         localStorage.setItem('lang', lang);
-        // toggle active button style
+        // buttons state
         const frBtn = document.getElementById('btn-fr');
         const enBtn = document.getElementById('btn-en');
         if (lang === 'fr') {
           frBtn.classList.add('bg-sky-700','text-white');
-          frBtn.classList.remove('text-slate-700');
           enBtn.classList.remove('bg-sky-700','text-white');
-          enBtn.classList.add('text-slate-700');
         } else {
           enBtn.classList.add('bg-sky-700','text-white');
-          enBtn.classList.remove('text-slate-700');
           frBtn.classList.remove('bg-sky-700','text-white');
-          frBtn.classList.add('text-slate-700');
         }
+        renderHighlightDate();
       }
 
-      // Single-page navigation: show only the requested section
+      // Format and render highlight date according to lang
+      function renderHighlightDate() {
+        const el = document.getElementById('highlight-date');
+        if (!el) return;
+        const iso = el.getAttribute('data-date');
+        if (!iso) return;
+        const d = new Date(iso);
+        const lang = document.documentElement.lang || 'fr';
+        const fmt = new Intl.DateTimeFormat(lang === 'fr' ? 'fr-CA' : 'en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+        el.textContent = fmt.format(d);
+      }
+
+      // Single-page navigation
       const sections = ['home','research','teaching','cv'];
       function showSection(id) {
         sections.forEach(s => {
           const el = document.getElementById(s);
           if (!el) return;
-          if (s === id) {
-            el.classList.remove('hidden');
-          } else {
-            el.classList.add('hidden');
-          }
+          el.classList.toggle('hidden', s !== id);
         });
         if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
         document.querySelectorAll('.nav-link').forEach(a => {
           const target = a.getAttribute('href').slice(1);
-          if (target === id) {
-            a.classList.add('text-sky-800','font-semibold');
-          } else {
-            a.classList.remove('text-sky-800','font-semibold');
-          }
+          a.classList.toggle('text-sky-800', target === id);
+          a.classList.toggle('font-semibold', target === id);
         });
         window.scrollTo({ top: 0 });
       }
 
-      // Hook nav links
       document.querySelectorAll('nav a[href^="#"]').forEach(a => {
         a.addEventListener('click', (e) => {
           e.preventDefault();
@@ -226,14 +238,11 @@
         });
       });
 
-      // Initialize language and sections
+      // Init
       const savedLang = localStorage.getItem('lang') || 'fr';
       setLang(savedLang);
-      const hash = location.hash.replace('#','');
-      const initial = sections.includes(hash) ? hash : 'home';
-      showSection(initial);
-
-      // Hash change sync
+      const initialHash = location.hash.replace('#','');
+      showSection(sections.includes(initialHash) ? initialHash : 'home');
       window.addEventListener('hashchange', () => {
         const h = location.hash.replace('#','');
         if (sections.includes(h)) showSection(h);
@@ -245,4 +254,3 @@
     </script>
   </body>
 </html>
-
