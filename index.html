@@ -45,11 +45,13 @@
               <strong data-i18n="hero.interestsLabel" class="text-slate-900"></strong>
               <span data-i18n="hero.topics"></span>
             </div>
-            <!-- Highlight / Accroche actualisable -->
-            <div class="mt-8 w-full">
-              <div class="rounded-xl bg-sky-50 border border-sky-200 p-4 shadow-sm">
-                <p class="text-sm text-sky-900 font-medium" data-i18n="highlight"></p>
-                <p class="text-xs text-sky-800/80 mt-2"><span data-i18n="news.updated"></span> <span id="highlight-date" data-date="2025-08-19"></span></p>
+            <!-- Bloc Accroche / Manifeste -->
+            <div class="mt-10 rounded-2xl bg-white/70 border border-slate-200 p-6 md:p-8 shadow-sm">
+              <blockquote class="text-2xl md:text-3xl font-semibold text-sky-900 text-center leading-snug" data-i18n="manifest.quote"></blockquote>
+              <div class="mt-6 space-y-4 text-slate-800">
+                <p data-i18n="manifest.p1"></p>
+                <p data-i18n="manifest.p2"></p>
+                <p data-i18n="manifest.p3"></p>
               </div>
             </div>
           </div>
@@ -125,8 +127,12 @@
             interestsLabel: "Domaines de recherche :",
             topics: "financement participatif (crowdfunding), FinTech, capital‑risque, structure financière."
           },
-          highlight: "Actualité : Avancées récentes sur le projet crowdfunding dans les marchés émergents (avec Maher Kooli).",
-          news: { updated: "Mise à jour :" },
+                    manifest: {
+            quote: "Redéfinir la valeur de la finance : créer des opportunités durables, préserver la dignité et contribuer à un monde plus inclusif.",
+            p1: "Longtemps, la finance a privilégié une vision étroite, centrée sur les rendements et les profits. Pourtant, une autre perspective s’impose : derrière chaque décision financière se trouvent des personnes, des familles et des communautés dont les aspirations méritent d’être entendues.",
+            p2: "Mes recherches explorent comment les mécanismes financiers peuvent servir concrètement le bien commun : favoriser l’accès à l’éducation, soutenir les entrepreneurs locaux, accélérer la transition écologique et renforcer la cohésion sociale.",
+            p3: "Je considère que la véritable valeur de la finance ne se mesure pas seulement en performance économique, mais à sa capacité de créer des opportunités durables, de préserver la dignité de chacun et de contribuer à une société plus inclusive et respectueuse de son environnement."
+          },
           research: {
             title: "Recherche",
             current: "Travaux en cours",
@@ -155,8 +161,12 @@
             interestsLabel: "Research interests:",
             topics: "crowdfunding, FinTech, venture capital, capital structure."
           },
-          highlight: "Update: Recent progress on the crowdfunding project in emerging markets (with Maher Kooli).",
-          news: { updated: "Updated:" },
+                    manifest: {
+            quote: "Redefining the value of finance: creating lasting opportunities, preserving dignity, and contributing to a more inclusive world.",
+            p1: "For too long, finance has favored a narrow view focused on returns and profits. Yet another perspective is needed: behind every financial decision are people, families, and communities whose aspirations deserve to be heard.",
+            p2: "My research explores how financial mechanisms can concretely serve the common good: expanding access to education, supporting local entrepreneurs, accelerating the ecological transition, and strengthening social cohesion.",
+            p3: "I believe the true value of finance is measured not only by economic performance, but by its ability to create lasting opportunities, preserve human dignity, and contribute to a more inclusive society that respects its environment."
+          },
           research: {
             title: "Research",
             current: "Ongoing Work",
@@ -198,7 +208,6 @@
           enBtn.classList.add('bg-sky-700','text-white');
           frBtn.classList.remove('bg-sky-700','text-white');
         }
-        renderHighlightDate();
       }
 
       // Format and render highlight date according to lang
@@ -254,3 +263,4 @@
     </script>
   </body>
 </html>
+
