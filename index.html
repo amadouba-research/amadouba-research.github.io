@@ -230,6 +230,23 @@
           if (typeof val === 'string') el.textContent = val;
         });
         localStorage.setItem('lang', lang);
+        // buttons state (defensive: only if buttons exist)
+        const frBtn = document.getElementById('btn-fr');
+        const enBtn = document.getElementById('btn-en');
+        if (frBtn && enBtn) {
+          if (lang === 'fr') {
+            frBtn.classList.add('bg-sky-700','text-white');
+            enBtn.classList.remove('bg-sky-700','text-white');
+          } else {
+            enBtn.classList.add('bg-sky-700','text-white');
+            frBtn.classList.remove('bg-sky-700','text-white');
+          }
+        }
+        // select fallback (if older header version is deployed)
+        const sel = document.getElementById('lang-select');
+        if (sel) sel.value = lang;
+      });
+        localStorage.setItem('lang', lang);
         // buttons state
         const frBtn = document.getElementById('btn-fr');
         const enBtn = document.getElementById('btn-en');
@@ -292,9 +309,13 @@
         if (sections.includes(h)) showSection(h);
       });
 
-      // Language buttons
-      document.getElementById('btn-fr').addEventListener('click', () => setLang('fr'));
-      document.getElementById('btn-en').addEventListener('click', () => setLang('en'));
+      // Language controls (buttons or select)
+      const frBtnEl = document.getElementById('btn-fr');
+      const enBtnEl = document.getElementById('btn-en');
+      if (frBtnEl) frBtnEl.addEventListener('click', () => setLang('fr'));
+      if (enBtnEl) enBtnEl.addEventListener('click', () => setLang('en'));
+      const selEl = document.getElementById('lang-select');
+      if (selEl) selEl.addEventListener('change', (e) => setLang(e.target.value));
     </script>
   </body>
 </html>
