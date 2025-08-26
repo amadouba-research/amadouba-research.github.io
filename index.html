@@ -7,13 +7,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       /* --- Fallback CSS (fonctionne même si le JS ne charge pas) --- */
-      .section{display:none}
-      #home.section{display:block}
-      :target.section{display:block}
-      /* Cacher l'accueil quand une autre section est ciblée */
-      body:has(#research:target) #home,
-      body:has(#teaching:target) #home,
-      body:has(#cv:target) #home{display:none}
+      .section { display: none; }
+      #home.section { display: block; }
+      :target.section { display: block; }
+      /* Quand le JS est actif, on force l'affichage via une classe */
+      .section.active { display: block; }
     </style>
   </head>
   <body class="min-h-screen flex flex-col bg-gradient-to-b from-slate-200 via-slate-150 to-slate-200 text-slate-800 font-sans">
@@ -237,12 +235,36 @@
       }
 
       function showSection(id) {
+        // Retirer l'état actif de toutes les sections
         sections.forEach(s => {
           const el = document.getElementById(s);
           if (!el) return;
-          el.classList.toggle('hidden', s !== id);
-          el.classList.toggle('section', true); // garder la classe section
+          el.classList.add('section'); // s'assure que la classe existe
+          el.classList.remove('active');
         });
+        // Activer la section demandée
+        const current = document.getElementById(id);
+        if (current) current.classList.add('active');
+
+        // Mettre à jour l'URL (et déclencher :target pour le fallback)
+        if (location.hash !== '#' + id) {
+          location.hash = id;
+        }
+
+        // État visuel du menu
+        document.querySelectorAll('.nav-link').forEach(a => {
+          const target = a.getAttribute('href').slice(1);
+          const active = target === id;
+          a.classList.toggle('text-sky-900', active);
+          a.classList.toggle('font-semibold', active);
+          a.classList.toggle('bg-sky-100', active);
+          a.classList.toggle('ring-1', active);
+          a.classList.toggle('ring-sky-200', active);
+        });
+
+        // Position en haut
+        window.scrollTo({ top: 0 });
+      });
         if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
         document.querySelectorAll('.nav-link').forEach(a => {
           const target = a.getAttribute('href').slice(1);
@@ -270,6 +292,13 @@
       const initial = sections.includes(location.hash.replace('#','')) ? location.hash.replace('#','') : 'home';
       showSection(initial);
 
+      // Assurer le fonctionnement sur mobile même si les handlers de clic ne se déclenchent pas
+      window.addEventListener('hashchange', () => {
+        const id = location.hash.replace('#','') || 'home';
+        if (sections.includes(id)) showSection(id);
+      });
+
     </script>
   </body>
 </html>
+
