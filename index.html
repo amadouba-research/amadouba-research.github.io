@@ -8,11 +8,15 @@
     <style>
       /* --- Fallback CSS (fonctionne même si le JS ne charge pas) --- */
       .section { display: none; }
-      #home.section { display: block; }
-      :target.section { display: block; }
-      /* Quand le JS est actif, on force l'affichage via une classe */
       .section.active { display: block; }
+      :target.section { display: block; }
     </style>
+    <noscript>
+      <style>
+        /* Si JS est désactivé, on montre l'accueil par défaut */
+        #home.section { display: block; }
+      </style>
+    </noscript>
   </head>
   <body class="min-h-screen flex flex-col bg-gradient-to-b from-slate-200 via-slate-150 to-slate-200 text-slate-800 font-sans">
     <!-- Header / Nav -->
@@ -53,7 +57,7 @@
               <div>
                 <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">Amadou Ba</h1>
                 <p class="mt-5 text-lg md:text-xl text-slate-800" data-i18n="hero.subtitle">Doctorant en administration (finance) à l’ESG UQAM.</p>
-                <p class="mt-3 text-slate-800" data-i18n="hero.bio">Titulaire d’un master en finance et d’une licence en management des organisations, obtenus à l’Université Gaston Berger (Sénégal).</p>
+                <p class="mt-3 text-slate-800" data-i18n="hero.bio">Titulaire d’un master en finance et d’une Licence en Sciences de Gestion, obtenus à l’Université Gaston Berger (Sénégal).</p>
                 <div class="mt-5 text-base text-slate-700">
                   <strong data-i18n="hero.interestsLabel" class="text-slate-900">Domaines de recherche :</strong>
                   <span data-i18n="hero.topics">financement participatif (crowdfunding), FinTech, capital‑risque, structure financière.</span>
@@ -89,7 +93,7 @@
             <h3 class="text-xl font-semibold text-slate-900" data-i18n="research.publication">Publication</h3>
             <p class="mt-2 text-slate-600 text-sm italic" data-i18n="research.pubtitle">Les déterminants de la structure financière : cas des sociétés cotées à la BRVM</p>
             <hr class="my-4 border-slate-200" />
-            <p class="text-slate-800 leading-relaxed" data-i18n="research.pubcontent">The work of Modigliani and Miller (1958) is the starting point for research on the financial structure of firms. They show that under certain assumptions, the value of the firm is independent of its financial structure. Several theoretical frameworks have emerged to contribute to this debate. This is the case of the trade-off theory, hierarchical financing and market timing. The objective of this article is to see the validity of these three theories at the level of the market of the Bourse Régionale des Valeurs Mobilières. We used panel data as a methodology to process data on a sample of 30 firms listed on the regional stock exchange over a period of 5 years. The results show that the trade-off theory is validated, the hierarchical financing theory is not, while the market timing results are inconclusive.</p>
+            <p class="text-slate-800 leading-relaxed" data-i18n="research.pubcontent">Les travaux de Modigliani et Miller (1958) constituent le point de départ de la recherche sur la structure financière des entreprises. Ils montrent que sous certaines hypothèses, la valeur de la firme est indépendante de sa structure financière. Plusieurs cadres théoriques ont émergé pour apporter leur contribution sur ce débat. C’est le cas de la théorie du compromis, du financement hiérarchique et du market timing. L’objectif de l’article est de voir la validité de ces trois théories sur le marché de la Bourse Régionale des Valeurs Mobilières. Nous avons utilisé les données de panel comme méthodologie de traitement des données sur un échantillon de 30 entreprises cotées à la bourse régionale des valeurs mobilières sur une période de cinq ans. Les résultats montrent que la théorie du compromis est validée, la théorie du financement hiérarchique ne l’est pas, tandis que les résultats du market timing sont peu concluants.</p>
           </div>
         </div>
       </section>
@@ -141,7 +145,7 @@
           nav: { home: "Accueil", research: "Recherche", teaching: "Enseignement", cv: "CV" },
           hero: {
             subtitle: "Doctorant en administration (finance) à l’ESG UQAM.",
-            bio: "Titulaire d’un master en finance et d’une licence en management des organisations, obtenus à l’Université Gaston Berger (Sénégal).",
+            bio: "Titulaire d’un master en finance et d’une Licence en Sciences de Gestion, obtenus à l’Université Gaston Berger (Sénégal).",
             interestsLabel: "Domaines de recherche :",
             topics: "financement participatif (crowdfunding), FinTech, capital‑risque, structure financière."
           },
@@ -158,7 +162,7 @@
             project: "Facteurs macroéconomiques et institutionnels sur le financement participatif dans les marchés émergents (avec Maher Kooli).",
             publication: "Publication",
             pubtitle: "Les déterminants de la structure financière : cas des sociétés cotées à la BRVM",
-            pubcontent: "The work of Modigliani and Miller (1958) is the starting point for research on the financial structure of firms. They show that under certain assumptions, the value of the firm is independent of its financial structure. Several theoretical frameworks have emerged to contribute to this debate. This is the case of the trade-off theory, hierarchical financing and market timing. The objective of this article is to see the validity of these three theories at the level of the market of the Bourse Régionale des Valeurs Mobilières. We used panel data as a methodology to process data on a sample of 30 firms listed on the regional stock exchange over a period of 5 years. The results show that the trade-off theory is validated, the hierarchical financing theory is not, while the market timing results are inconclusive."
+            pubcontent: "Les travaux de Modigliani et Miller (1958) constituent le point de départ de la recherche sur la structure financière des entreprises. Ils montrent que sous certaines hypothèses, la valeur de la firme est indépendante de sa structure financière. Plusieurs cadres théoriques ont émergé pour apporter leur contribution sur ce débat. C’est le cas de la théorie du compromis, du financement hiérarchique et du market timing. L’objectif de l’article est de voir la validité de ces trois théories sur le marché de la Bourse Régionale des Valeurs Mobilières. Nous avons utilisé les données de panel comme méthodologie de traitement des données sur un échantillon de 30 entreprises cotées à la bourse régionale des valeurs mobilières sur une période de cinq ans. Les résultats montrent que la théorie du compromis est validée, la théorie du financement hiérarchique ne l’est pas, tandis que les résultats du market timing sont peu concluants."
           },
           teaching: {
             title: "Enseignement",
@@ -246,7 +250,7 @@
         const current = document.getElementById(id);
         if (current) current.classList.add('active');
 
-        // Mettre à jour l'URL (et déclencher :target pour le fallback)
+        // Mettre à jour l'URL (et permettre navigation arrière/avant)
         if (location.hash !== '#' + id) {
           location.hash = id;
         }
@@ -263,17 +267,6 @@
         });
 
         // Position en haut
-        window.scrollTo({ top: 0 });
-      });
-        if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
-        document.querySelectorAll('.nav-link').forEach(a => {
-          const target = a.getAttribute('href').slice(1);
-          a.classList.toggle('text-sky-900', target === id);
-          a.classList.toggle('font-semibold', target === id);
-          a.classList.toggle('bg-sky-100', target === id);
-          a.classList.toggle('ring-1', target === id);
-          a.classList.toggle('ring-sky-200', target === id);
-        });
         window.scrollTo({ top: 0 });
       }
 
@@ -292,7 +285,7 @@
       const initial = sections.includes(location.hash.replace('#','')) ? location.hash.replace('#','') : 'home';
       showSection(initial);
 
-      // Assurer le fonctionnement sur mobile même si les handlers de clic ne se déclenchent pas
+      // Assurer le fonctionnement sur mobile et navigation via #ancre
       window.addEventListener('hashchange', () => {
         const id = location.hash.replace('#','') || 'home';
         if (sections.includes(id)) showSection(id);
@@ -301,4 +294,3 @@
     </script>
   </body>
 </html>
-
