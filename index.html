@@ -301,13 +301,48 @@
         if (search) search.placeholder = lang==='fr' ? 'Rechercher dans le blog…' : 'Search the blog…';
       }
 
+      function renderBlogListTeaser() {
+        const lang = document.documentElement.lang || 'fr';
+        const q = (document.getElementById('blog-search')?.value || '').toLowerCase();
+        const list = blogPosts.filter(p => p.lang === lang && (
+          (p.title||'').toLowerCase().includes(q) ||
+          stripTags(p.content||'').toLowerCase().includes(q)
+        ));
+        const readMore = lang==='fr' ? 'Lire la suite' : 'Read more';
+        const html = (list.length ? list.map(p => {
+          const full = stripTags(p.content || '');
+          let teaser = full.slice(0, 420);
+          const cut = Math.max(teaser.lastIndexOf('. '), teaser.lastIndexOf(' '));
+          if (full.length > 420 && cut > 60) teaser = teaser.slice(0, cut + 1) + ' …';
+          return `
+            <article class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+              <div class="flex items-center justify-between gap-3">
+                <a class="text-xl font-semibold text-slate-900 hover:underline" href="#blog/${p.slug}">${p.title}</a>
+                <span class="text-sm text-slate-500">${formatDate(p.date, lang)}</span>
+              </div>
+              ${p.tags && p.tags.length ? `<div class=\"mt-2 flex flex-wrap gap-2\">${p.tags.map(tag => `<span class=\"px-2 py-0.5 text-xs rounded-full bg-sky-50 border border-sky-200 text-sky-900\">${tag}</span>`).join('')}</div>` : ''}
+              <p class="mt-3 text-slate-800">${teaser}</p>
+              <a class="mt-2 inline-block text-sky-800 hover:underline" href="#blog/${p.slug}">${readMore} →</a>
+            </article>
+          `;
+        }).join('') : `<div class="text-center text-slate-500">${lang==='fr'?'Aucun article pour le moment.':'No posts yet.'}</div>`);
+        const listMount = document.getElementById('blog-list');
+        const detailMount = document.getElementById('blog-detail');
+        if (listMount) listMount.innerHTML = html;
+        if (detailMount) detailMount.classList.add('hidden');
+        const ctrl = document.getElementById('blog-controls');
+        if (ctrl) ctrl.classList.remove('hidden');
+        const search = document.getElementById('blog-search');
+        if (search) search.placeholder = lang==='fr' ? 'Rechercher dans le blog…' : 'Search the blog…';
+      }
+
       function renderBlogDetail(slug) {
         const lang = document.documentElement.lang || 'fr';
         const post = blogPosts.find(p => p.slug === slug && p.lang === lang);
         const listMount = document.getElementById('blog-list');
         const detailMount = document.getElementById('blog-detail');
         if (!detailMount || !listMount) return;
-        if (!post) { renderBlogList(); return; }
+        if (!post) { renderBlogListTeaser(); return; }
         listMount.innerHTML = '';
         const back = lang==='fr' ? '← Retour au blog' : '← Back to blog';
         const tagsHtml = post.tags && post.tags.length ? `<div class="mt-2 flex flex-wrap gap-2">${post.tags.map(tag => `<span class=\"px-2 py-0.5 text-xs rounded-full bg-sky-50 border border-sky-200 text-sky-900\">${tag}</span>`).join('')}</div>` : '';
@@ -331,7 +366,7 @@
           renderBlogDetail(slug);
         } else if (location.hash.replace('#','') === 'blog') {
           showSection('blog');
-          renderBlogList();
+          renderBlogListTeaser();
         }
       }
 
@@ -403,7 +438,7 @@
         renderBlogDetail(initialHash.slice(5));
       } else if (['home','research','teaching','cv','blog'].includes(initialHash)) {
         showSection(initialHash || 'home');
-        if (initialHash === 'blog') renderBlogList();
+        if (initialHash === 'blog') renderBlogListTeaser();
       } else {
         showSection('home');
       }
@@ -416,7 +451,7 @@
           renderBlogDetail(h.slice(5));
         } else if (h === 'blog') {
           showSection('blog');
-          renderBlogList();
+          renderBlogListTeaser();
         } else if (sections.includes(h)) {
           showSection(h);
         }
