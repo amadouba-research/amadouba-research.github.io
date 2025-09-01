@@ -333,7 +333,11 @@
         ));
         const readMore = lang==='fr' ? 'Lire la suite' : 'Read more';
         const html = (list.length ? list.map(p => {
-          const full = stripTags(p.content || '');
+          const html = p.content || '';
+          const tmp = document.createElement('div');
+          tmp.innerHTML = html;
+          const firstP = tmp.querySelector('p');
+          let full = (firstP ? firstP.textContent : stripTags(html)).trim();
           let teaser = full.slice(0, 420);
           const cut = Math.max(teaser.lastIndexOf('. '), teaser.lastIndexOf(' '));
           if (full.length > 420 && cut > 60) teaser = teaser.slice(0, cut + 1) + ' …';
