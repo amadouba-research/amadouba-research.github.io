@@ -313,7 +313,9 @@
           stripTags(p.content||'').toLowerCase().includes(q)
         ));
         const readMore = lang==='fr' ? 'Lire la suite' : 'Read more';
-        const html = (list.length ? list.map(p => `
+        // Tri par date décroissante (plus récents en premier)
+        const sorted = [...list].sort((a, b) => new Date(b.date) - new Date(a.date));
+        const html = (sorted.length ? sorted.map(p => `
           <article class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
             <div class="flex items-center justify-between gap-3">
               <a class="text-xl font-semibold text-slate-900 hover:underline" href="#blog/${p.slug}">${p.title}</a>
@@ -342,7 +344,7 @@
           stripTags(p.content||'').toLowerCase().includes(q)
         ));
         const readMore = lang==='fr' ? 'Lire la suite' : 'Read more';
-        const html = (list.length ? list.map(p => {
+        const html = (sorted.length ? sorted.map(p => {
           const html = p.content || '';
           const tmp = document.createElement('div');
           tmp.innerHTML = html;
