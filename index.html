@@ -24,10 +24,11 @@
       <div class="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
         <a href="#home" class="font-extrabold tracking-tight text-2xl text-slate-900">Amadou Ba</a>
         <nav class="flex flex-wrap items-center gap-6 md:gap-10 text-sm font-medium">
-          <a href="#home" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors">Accueil</a>
-          <a href="#research" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors">Recherche</a>
-          <a href="#teaching" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors">Enseignement</a>
-          <a href="#cv" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors">CV</a>
+          <a href="#home" data-i18n="nav.home" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors">Accueil</a>
+          <a href="#research" data-i18n="nav.research" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors">Recherche</a>
+          <a href="#teaching" data-i18n="nav.teaching" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors">Enseignement</a>
+          <a href="#cv" data-i18n="nav.cv" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors">CV</a>
+          <a href="#blog" data-i18n="nav.blog" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors">Blog</a>
         </nav>
         <div class="flex items-center gap-2">
           <div class="flex items-center gap-1 rounded-xl border border-slate-300 p-1 bg-white">
@@ -98,6 +99,15 @@
         </div>
       </section>
 
+      <!-- Blog -->
+      <section id="blog" class="section mx-auto max-w-6xl px-6 py-24 border-t border-slate-300">
+        <h2 class="text-center text-4xl md:text-5xl font-extrabold tracking-tight text-sky-900 mb-8" data-i18n="blog.title">Blog</h2>
+        <div class="max-w-3xl mx-auto mb-8">
+          <input id="blog-search" class="w-full rounded-xl border border-slate-300 bg-white/90 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-600" placeholder="Rechercher dans le blog…" />
+        </div>
+        <div id="blog-list" class="grid gap-6 md:grid-cols-2"></div>
+      </section>
+
       <!-- Enseignement -->
       <section id="teaching" class="section mx-auto max-w-6xl px-6 py-24 border-t border-slate-300">
         <h2 class="text-center text-4xl md:text-5xl font-extrabold tracking-tight text-sky-900 mb-10" data-i18n="teaching.title">Enseignement</h2>
@@ -142,7 +152,7 @@
     <script>
       const i18n = {
         fr: {
-          nav: { home: "Accueil", research: "Recherche", teaching: "Enseignement", cv: "CV" },
+          nav: { home: "Accueil", research: "Recherche", teaching: "Enseignement", cv: "CV", blog: "Blog" },
           hero: {
             subtitle: "Doctorant en administration (finance) à l’ESG UQAM.",
             bio: "Titulaire d’un master en finance et d’une Licence en Sciences de Gestion, obtenus à l’Université Gaston Berger (Sénégal).",
@@ -171,49 +181,90 @@
           },
           cv: {
             title: "CV",
-            text: "Téléchargez mon CV en PDF.",
-            button: "Télécharger mon CV (PDF)",
-            update: "Dernière mise à jour : 2025"
-          }
-        },
-        en: {
-          nav: { home: "Home", research: "Research", teaching: "Teaching", cv: "CV" },
-          hero: {
-            subtitle: "PhD candidate in Administration (Finance) at ESG UQAM.",
-            bio: "Holder of a Master’s in Finance and a Bachelor’s in Management of Organizations from Université Gaston Berger (Senegal).",
-            interestsLabel: "Research interests:",
-            topics: "crowdfunding, FinTech, venture capital, capital structure."
-          },
-          manifest: {
-            quote: "Redefining the value of finance: creating lasting opportunities, preserving dignity, and contributing to a more inclusive world.",
-            p1: "For too long, finance has favored a narrow view focused on returns and profits. Yet another perspective is needed: behind every financial decision are people, families, and communities whose aspirations deserve to be heard.",
-            p2: "My research explores how financial mechanisms can concretely serve the common good: expanding access to education, supporting local entrepreneurs, accelerating the ecological transition, and strengthening social cohesion.",
-            p3: "I believe the true value of finance is measured not only by economic performance, but by its ability to create lasting opportunities, preserve human dignity, and contribute to a more inclusive society that respects its environment.",
-            final: "This is the finance I commit to building."
-          },
-          research: {
-            title: "Research",
-            current: "Ongoing Work",
-            project: "Macroeconomic and institutional factors on crowdfunding in emerging markets (with Maher Kooli).",
-            publication: "Publication",
-            pubtitle: "Determinants of capital structure: Evidence from listed firms on the BRVM",
-            pubcontent: "The work of Modigliani and Miller (1958) is the starting point for research on the financial structure of firms. They show that under certain assumptions, the value of the firm is independent of its financial structure. Several theoretical frameworks have emerged to contribute to this debate. This is the case of the trade-off theory, hierarchical financing and market timing. The objective of this article is to see the validity of these three theories at the level of the market of the Bourse Régionale des Valeurs Mobilières. We used panel data as a methodology to process data on a sample of 30 firms listed on the regional stock exchange over a period of 5 years. The results show that the trade-off theory is validated, the hierarchical financing theory is not, while the market timing results are inconclusive."
-          },
-          teaching: {
-            title: "Teaching",
-            role1: "Tutorial Instructor",
-            role2: "Pedagogical Supervision"
-          },
-          cv: {
-            title: "CV",
             text: "Download my CV as a PDF.",
             button: "Download my CV (PDF)",
             update: "Last updated: 2025"
+          },
+          blog: {
+            title: "Blog",
+            searchPlaceholder: "Search the blog…",
+            empty: "No posts yet.",
+            readMore: "Read more"
           }
-        }
-      };
+        };
 
-      const sections = ['home','research','teaching','cv'];
+      // --- Blog data (edit to add posts) ---
+      const blogPosts = [
+        {
+          lang: 'fr',
+          title: 'Lancement du site',
+          date: '2025-09-01',
+          tags: ['Annonce'],
+          excerpt: 'Bienvenue sur mon site académique. Vous y trouverez mes recherches, enseignements et des réflexions régulières.',
+          content: '<p>Je publierai ici des notes courtes pour partager des idées en cours, des lectures et des actualités de mes projets de recherche.</p>'
+        },
+        {
+          lang: 'en',
+          title: 'Site launch',
+          date: '2025-09-01',
+          tags: ['Announcement'],
+          excerpt: 'Welcome to my academic site. You will find my research, teaching, and occasional reflections.',
+          content: '<p>I will use this space for short notes about ongoing ideas, readings, and updates on my research projects.</p>'
+        }
+      ];
+
+      function t(path) {
+        const lang = document.documentElement.lang || 'fr';
+        const parts = path.split('.');
+        let val = i18n[lang];
+        for (const p of parts) val = val && val[p];
+        return typeof val === 'string' ? val : '';
+      }
+
+      function formatDate(iso, lang) {
+        const d = new Date(iso);
+        try {
+          return new Intl.DateTimeFormat(lang === 'fr' ? 'fr-CA' : 'en-CA', { year: 'numeric', month: 'long', day: 'numeric' }).format(d);
+        } catch(e) { return iso; }
+      }
+
+      function stripTags(html){ return (html || '').replace(/<[^>]*>/g,''); }
+
+      function renderBlog() {
+        const lang = document.documentElement.lang || 'fr';
+        const q = (document.getElementById('blog-search')?.value || '').toLowerCase();
+        const list = blogPosts.filter(p => p.lang === lang && (
+          (p.title||'').toLowerCase().includes(q) ||
+          (p.excerpt||'').toLowerCase().includes(q) ||
+          stripTags(p.content||'').toLowerCase().includes(q)
+        ));
+        const html = (list.length ? list.map(p => `
+          <article class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between gap-3">
+              <h3 class="text-xl font-semibold text-slate-900">${p.title}</h3>
+              <span class="text-sm text-slate-500">${formatDate(p.date, lang)}</span>
+            </div>
+            ${p.tags && p.tags.length ? `<div class="mt-2 flex flex-wrap gap-2">${p.tags.map(tag => `<span class=\"px-2 py-0.5 text-xs rounded-full bg-sky-50 border border-sky-200 text-sky-900\">${tag}</span>`).join('')}</div>` : ''}
+            <p class="mt-3 text-slate-800">${p.excerpt || ''}</p>
+            <details class="mt-3 group">
+              <summary class="cursor-pointer text-sky-800 hover:underline">${t('blog.readMore')}</summary>
+              <div class="mt-3 text-slate-800 leading-relaxed">${p.content || ''}</div>
+            </details>
+          </article>
+        `).join('') : `<div class="text-center text-slate-500">${t('blog.empty')}</div>`);
+        const mount = document.getElementById('blog-list');
+        if (mount) mount.innerHTML = html;
+
+        // Placeholder i18n for search
+        const search = document.getElementById('blog-search');
+        if (search) search.placeholder = t('blog.searchPlaceholder');
+      }
+
+      document.addEventListener('input', (e) => {
+        if (e.target && e.target.id === 'blog-search') renderBlog();
+      });
+
+      const sections = ['home','research','teaching','cv','blog']; = ['home','research','teaching','cv','blog'];
 
       function setLang(lang) {
         document.documentElement.lang = lang;
@@ -223,6 +274,22 @@
           for (const p of path) val = val && val[p];
           if (typeof val === 'string') el.textContent = val;
         });
+        localStorage.setItem('lang', lang);
+        // buttons state (si présents)
+        const frBtn = document.getElementById('btn-fr');
+        const enBtn = document.getElementById('btn-en');
+        if (frBtn && enBtn) {
+          if (lang === 'fr') {
+            frBtn.classList.add('bg-sky-700','text-white');
+            enBtn.classList.remove('bg-sky-700','text-white');
+          } else {
+            enBtn.classList.add('bg-sky-700','text-white');
+            frBtn.classList.remove('bg-sky-700','text-white');
+          }
+        }
+        // Maj du placeholder + re-render blog
+        renderBlog();
+      });
         localStorage.setItem('lang', lang);
         // buttons state (si présents)
         const frBtn = document.getElementById('btn-fr');
@@ -284,9 +351,13 @@
       setLang(savedLang);
       const initial = sections.includes(location.hash.replace('#','')) ? location.hash.replace('#','') : 'home';
       showSection(initial);
+      renderBlog();
 
       // Assurer le fonctionnement sur mobile et navigation via #ancre
       window.addEventListener('hashchange', () => {
+        const id = location.hash.replace('#','') || 'home';
+        if (sections.includes(id)) showSection(id);
+      });('hashchange', () => {
         const id = location.hash.replace('#','') || 'home';
         if (sections.includes(id)) showSection(id);
       });
@@ -294,3 +365,4 @@
     </script>
   </body>
 </html>
+
