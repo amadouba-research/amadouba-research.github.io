@@ -6,39 +6,28 @@
     <title>Amadou Ba</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      /* Fallback même sans JS */
+      /* Sections SPA */
       .section { display: none; }
       .section.active { display: block; }
       :target.section { display: block; }
 
-      /* --- Mise en page blog lisible & pro --- */
+      /* Lisibilité Blog (page détail) */
       .blog-content h4 {
-        margin-top: 2rem;
-        padding-top: 1rem;
-        border-top: 1px solid #e2e8f0; /* slate-200 */
-        font-weight: 600; /* semibold */
-        font-size: 1.25rem; /* text-xl */
-        color: #0f172a; /* slate-900 */
+        margin-top: 2rem; padding-top: 1rem;
+        border-top: 1px solid #e2e8f0;
+        font-weight: 600; font-size: 1.25rem; color: #0f172a;
         letter-spacing: 0.01em;
       }
-      .blog-content p {
-        margin-top: 1rem;
-        line-height: 1.8; /* leading-relaxed+ */
-        color: #0f172a; /* slate-900 */
-      }
+      .blog-content p { margin-top: 1rem; line-height: 1.8; color: #0f172a; }
       .blog-content ul { margin-top: 1rem; padding-left: 1.25rem; }
       .blog-content li { margin-top: 0.5rem; }
       .blog-content strong { font-weight: 700; color: #0f172a; }
       .blog-content hr {
         border: none; height: 1px; margin: 1.5rem 0;
-        background: linear-gradient(90deg, rgba(0,0,0,0) 0%, #cbd5e1 50%, rgba(0,0,0,0) 100%); /* slate-300 */
+        background: linear-gradient(90deg, rgba(0,0,0,0) 0%, #cbd5e1 50%, rgba(0,0,0,0) 100%);
       }
     </style>
-    <noscript>
-      <style>
-        #home.section { display: block; }
-      </style>
-    </noscript>
+    <noscript><style>#home.section { display:block; }</style></noscript>
   </head>
   <body class="min-h-screen flex flex-col bg-gradient-to-b from-slate-200 via-slate-150 to-slate-200 text-slate-800 font-sans">
     <!-- Header / Nav -->
@@ -46,11 +35,11 @@
       <div class="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
         <a href="#home" class="font-extrabold tracking-tight text-2xl text-slate-900">Amadou Ba</a>
         <nav class="flex flex-wrap items-center gap-6 md:gap-10 text-sm font-medium">
-          <a href="#home" data-i18n="nav.home" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors">Accueil</a>
-          <a href="#research" data-i18n="nav.research" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors">Recherche</a>
-          <a href="#teaching" data-i18n="nav.teaching" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors">Enseignement</a>
-          <a href="#cv" data-i18n="nav.cv" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors">CV</a>
-          <a href="#blog" data-i18n="nav.blog" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors">Blog</a>
+          <a href="#home" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors" data-i18n="nav.home">Accueil</a>
+          <a href="#research" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors" data-i18n="nav.research">Recherche</a>
+          <a href="#teaching" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors" data-i18n="nav.teaching">Enseignement</a>
+          <a href="#cv" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors" data-i18n="nav.cv">CV</a>
+          <a href="#blog" class="nav-link px-3 py-1 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-sky-900 transition-colors" data-i18n="nav.blog">Blog</a>
         </nav>
         <div class="flex items-center gap-2">
           <div class="flex items-center gap-1 rounded-xl border border-slate-300 p-1 bg-white">
@@ -65,7 +54,7 @@
       <!-- Accueil -->
       <section id="home" class="section relative overflow-hidden">
         <div class="mx-auto max-w-6xl px-6 py-20 md:py-24">
-          <!-- HERO unified card -->
+          <!-- Carte de présentation -->
           <div class="relative rounded-3xl bg-white/80 border border-slate-200 shadow-md p-6 md:p-10">
             <div class="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-sky-100 blur-2xl opacity-50"></div>
             <div class="relative grid items-center gap-6 md:gap-8 md:grid-cols-2">
@@ -81,16 +70,18 @@
                 <p class="mt-5 text-lg md:text-xl text-slate-800" data-i18n="hero.subtitle">Doctorant en administration (finance) à l’ESG UQAM.</p>
                 <p class="mt-3 text-slate-800" data-i18n="hero.bio">Titulaire d’un master en finance et d’une Licence en Sciences de Gestion, obtenus à l’Université Gaston Berger (Sénégal).</p>
                 <div class="mt-5 text-base text-slate-700">
-                  <strong data-i18n="hero.interestsLabel" class="text-slate-900">Domaines de recherche :</strong>
-                  <span data-i18n="hero.topics">financement participatif (crowdfunding), FinTech, capital‑risque, structure financière.</span>
+                  <strong class="text-slate-900" data-i18n="hero.interestsLabel">Domaines de recherche :</strong>
+                  <span data-i18n="hero.topics">financement participatif (crowdfunding), FinTech, capital-risque, structure financière.</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- MANIFEST / QUOTE band -->
+          <!-- Citation / Manifeste -->
           <div class="mt-10 md:mt-12 rounded-3xl bg-gradient-to-r from-sky-50 via-white to-sky-50 border border-slate-200 p-6 md:p-10 shadow-sm ring-1 ring-slate-200/70">
-            <blockquote class="text-3xl md:text-4xl font-semibold italic text-sky-900 text-center leading-normal" data-i18n="manifest.quote">Redéfinir la valeur de la finance : créer des opportunités durables, préserver la dignité et contribuer à un monde plus inclusif.</blockquote>
+            <blockquote class="text-3xl md:text-4xl font-semibold italic text-sky-900 text-center leading-normal" data-i18n="manifest.quote">
+              Redéfinir la valeur de la finance : créer des opportunités durables, préserver la dignité et contribuer à un monde plus inclusif.
+            </blockquote>
             <div class="mt-4 h-1 w-16 mx-auto rounded-full bg-sky-700/80"></div>
             <div class="mt-6 md:mt-8 space-y-4 text-slate-800 max-w-4xl mx-auto">
               <p data-i18n="manifest.p1">Longtemps, la finance a privilégié une vision étroite, centrée sur les rendements et les profits. Pourtant, une autre perspective s’impose : derrière chaque décision financière se trouvent des personnes, des familles et des communautés dont les aspirations méritent d’être entendues.</p>
@@ -172,6 +163,7 @@
     </footer>
 
     <script>
+      /* ---------- i18n ---------- */
       const i18n = {
         fr: {
           nav: { home: "Accueil", research: "Recherche", teaching: "Enseignement", cv: "CV", blog: "Blog" },
@@ -179,7 +171,7 @@
             subtitle: "Doctorant en administration (finance) à l’ESG UQAM.",
             bio: "Titulaire d’un master en finance et d’une Licence en Sciences de Gestion, obtenus à l’Université Gaston Berger (Sénégal).",
             interestsLabel: "Domaines de recherche :",
-            topics: "financement participatif (crowdfunding), FinTech, capital‑risque, structure financière."
+            topics: "financement participatif (crowdfunding), FinTech, capital-risque, structure financière."
           },
           manifest: {
             quote: "Redéfinir la valeur de la finance : créer des opportunités durables, préserver la dignité et contribuer à un monde plus inclusif.",
@@ -196,24 +188,9 @@
             pubtitle: "Les déterminants de la structure financière : cas des sociétés cotées à la BRVM",
             pubcontent: "Les travaux de Modigliani et Miller (1958) constituent le point de départ de la recherche sur la structure financière des entreprises. Ils montrent que sous certaines hypothèses, la valeur de la firme est indépendante de sa structure financière. Plusieurs cadres théoriques ont émergé pour apporter leur contribution sur ce débat. C’est le cas de la théorie du compromis, du financement hiérarchique et du market timing. L’objectif de l’article est de voir la validité de ces trois théories sur le marché de la Bourse Régionale des Valeurs Mobilières. Nous avons utilisé les données de panel comme méthodologie de traitement des données sur un échantillon de 30 entreprises cotées à la bourse régionale des valeurs mobilières sur une période de cinq ans. Les résultats montrent que la théorie du compromis est validée, la théorie du financement hiérarchique ne l’est pas, tandis que les résultats du market timing sont peu concluants."
           },
-          teaching: {
-            title: "Enseignement",
-            role1: "Chargé de travaux dirigés",
-            role2: "Encadrement pédagogique"
-          },
-          cv: {
-            title: "CV",
-            text: "Téléchargez mon CV en PDF.",
-            button: "Télécharger mon CV (PDF)",
-            update: "Dernière mise à jour : 2025"
-          },
-          blog: {
-            title: "Blog",
-            searchPlaceholder: "Rechercher dans le blog…",
-            empty: "Aucun article pour le moment.",
-            readMore: "Lire la suite",
-            back: "← Retour au blog"
-          }
+          teaching: { title: "Enseignement", role1: "Chargé de travaux dirigés", role2: "Encadrement pédagogique" },
+          cv: { title: "CV", text: "Téléchargez mon CV en PDF.", button: "Télécharger mon CV (PDF)", update: "Dernière mise à jour : 2025" },
+          blog: { title: "Blog", searchPlaceholder: "Rechercher dans le blog…", empty: "Aucun article pour le moment.", readMore: "Lire la suite", back: "← Retour au blog" }
         },
         en: {
           nav: { home: "Home", research: "Research", teaching: "Teaching", cv: "CV", blog: "Blog" },
@@ -238,84 +215,106 @@
             pubtitle: "Determinants of capital structure: Evidence from listed firms on the BRVM",
             pubcontent: "The work of Modigliani and Miller (1958) is the starting point for research on the financial structure of firms. They show that under certain assumptions, the value of the firm is independent of its financial structure. Several theoretical frameworks have emerged to contribute to this debate. This is the case of the trade-off theory, hierarchical financing and market timing. The objective of this article is to see the validity of these three theories at the level of the market of the Bourse Régionale des Valeurs Mobilières. We used panel data as a methodology to process data on a sample of 30 firms listed on the regional stock exchange over a period of 5 years. The results show that the trade-off theory is validated, the hierarchical financing theory is not, while the market timing results are inconclusive."
           },
-          teaching: {
-            title: "Teaching",
-            role1: "Tutorial Instructor",
-            role2: "Pedagogical Supervision"
-          },
-          cv: {
-            title: "CV",
-            text: "Download my CV as a PDF.",
-            button: "Download my CV (PDF)",
-            update: "Last updated: 2025"
-          },
-          blog: {
-            title: "Blog",
-            searchPlaceholder: "Search the blog…",
-            empty: "No posts yet.",
-            readMore: "Read more",
-            back: "← Back to blog"
-          }
+          teaching: { title: "Teaching", role1: "Tutorial Instructor", role2: "Pedagogical Supervision" },
+          cv: { title: "CV", text: "Download my CV as a PDF.", button: "Download my CV (PDF)", update: "Last updated: 2025" },
+          blog: { title: "Blog", searchPlaceholder: "Search the blog…", empty: "No posts yet.", readMore: "Read more", back: "← Back to blog" }
         }
       };
 
-      // --- Blog data (edit to add posts) ---
+      /* ---------- Articles FR + EN ---------- */
       const blogPosts = [
-        {
-          lang: 'fr',
-          slug: 'redefinir-la-finance-rigueur-academique-dimension-humaine',
-          title: 'Redéfinir la finance : entre rigueur académique et dimension humaine',
-          date: '2025-06-15',
-          tags: ['Réflexion','Finance durable','ESG'],
-          excerpt: 'Pourquoi la finance doit intégrer sa dimension humaine et sociale, au-delà des rendements ; vers une approche inclusive et durable.',
-          content: '<h4>Introduction</h4><p>Pendant longtemps, la finance s’est construite autour d’une logique essentiellement quantitative, centrée sur les rendements, la performance et la maximisation des profits. Cette vision a permis des avancées notables en matière d’efficacité et d’allocation des ressources, mais elle a aussi écarté une question fondamentale : quel est l’impact humain et social des décisions financières ?</p><p>Dans une discussion avec le professeur Maher Kooli, pionnier reconnu dans le domaine de la finance, il m’a rappelé que la dimension humaine demeure essentielle, même dans les approches les plus techniques. Cette réflexion rejoint la vision de Muhammad Yunus, prix Nobel de la paix et fondateur de la Grameen Bank, pour qui la finance doit être envisagée comme un instrument au service du bien commun, et non comme une fin en soi.</p><h4>Vers une finance inclusive et durable</h4><p>La finance moderne ne peut se réduire à la seule logique de rendement. Elle doit être comprise comme un levier de transformation sociale et environnementale. Concrètement, elle peut :</p><ul><li>Favoriser l’accès à l’éducation, en réduisant les barrières financières.</li><li>Soutenir l’entrepreneuriat local, en permettant à des acteurs souvent exclus des circuits traditionnels de se développer.</li><li>Accélérer la transition écologique, en orientant les investissements vers des projets durables.</li><li>Renforcer la cohésion sociale, en encourageant les dynamiques de solidarité et d’inclusion.</li></ul><h4>Redéfinir la notion de valeur</h4><p>Ce changement de perspective exige également une redéfinition de la notion de valeur. La performance financière ne saurait être mesurée uniquement par les profits générés ou les rendements obtenus. Elle doit intégrer des critères sociaux et environnementaux.</p><p>Par exemple, l’adoption des critères ESG (Environnement, Social, Gouvernance) illustre bien cette évolution : au-delà des résultats financiers, une entreprise ou un projet est désormais évalué en fonction de son impact sur l’environnement, de ses pratiques sociales et de la qualité de sa gouvernance.</p><h4>Conclusion : pour une finance de sens</h4><p>La véritable valeur de la finance ne réside pas seulement dans sa capacité à générer du profit, mais dans son rôle d’instrument au service de l’intérêt général. C’est cette finance que je m’engage à promouvoir à travers mes recherches : une finance rigoureuse dans ses méthodes, mais consciente de ses responsabilités sociales et environnementales.</p><p>Loin de s’opposer à la logique économique traditionnelle, cette approche l’enrichit en redonnant un sens et une finalité aux pratiques financières. C’est dans cette articulation entre rigueur scientifique et responsabilité sociale que se dessine l’avenir d’une finance réellement durable.</p>'
-        }
-      ,
+        /* FR (4 août 2025) */
         {
           lang: 'fr',
           slug: 'gestion-de-portefeuille-reponse-a-la-vie-chere',
           title: 'La gestion de portefeuille : une réponse à la vie chère',
           date: '2025-08-04',
           tags: ['Finances personnelles','Investissement'],
-          excerpt: 'Comment la gestion de portefeuille peut aider les ménages à faire face à la vie chère tout en construisant une sécurité financière.',
-          content: '<h4>Faire face à la vie chère au Canada</h4><p>Au Canada, beaucoup de familles ressentent le poids de la vie chère : loyers élevés, factures qui augmentent, panier d’épicerie plus coûteux. Pour beaucoup, il devient difficile non seulement d’épargner, mais parfois même de maintenir un budget équilibré. Cette réalité alimente une inquiétude grandissante : comment protéger ses revenus, anticiper les imprévus et garder une marge de sécurité dans un contexte économique marqué par l’incertitude et la possibilité d’une récession ?</p><p>Face à ces défis, de plus en plus de ménages s’intéressent aux placements financiers. Investir n’est plus perçu uniquement comme un outil de richesse à long terme réservé aux initiés, mais comme une réponse concrète aux pressions immédiates. Que ce soit pour arrondir ses fins de mois, préparer un projet futur ou simplement bâtir un fonds d’urgence, la gestion de portefeuille devient une démarche accessible, à la croisée de la théorie académique et de la vie quotidienne.</p><h4>Les principes de base de la gestion de portefeuille</h4><p>La gestion de portefeuille repose sur quelques principes essentiels. Le premier est la diversification, qui consiste à ne pas mettre tous ses œufs dans le même panier. Répartir ses investissements entre actions, obligations, fonds communs ou encore épargne-retraite permet de réduire les risques liés à l’incertitude des marchés.</p><p>Le deuxième principe est l’équilibre rendement-risque : accepter qu’un placement plus risqué doit offrir en contrepartie un potentiel de rendement plus élevé, tandis qu’un placement plus sûr garantit davantage de stabilité. Ces idées, inspirées des modèles académiques comme le MEDAF, peuvent sembler abstraites, mais elles se traduisent très simplement dans la vie quotidienne : trouver un juste milieu entre sécurité et espoir de gains.</p><p>Un ami me demandait récemment : « Comment faire des placements pour avoir d’autres sources de revenu ? » Sa question illustre une inquiétude largement partagée. La gestion de portefeuille peut justement apporter des réponses pratiques : bien pensée, elle aide à réduire les risques, à sécuriser une partie des revenus et à maintenir une stabilité financière, même en période de turbulence.</p><h4>Des solutions accessibles et un savoir à démocratiser</h4><p>Ainsi, la gestion de portefeuille n’est pas réservée aux experts de Bay Street. Elle concerne chacun de nous, car elle touche directement à notre capacité de faire face à la vie chère, de préparer l’avenir et de garder une marge de sécurité face aux imprévus économiques.</p><p>Concrètement, cela peut passer par des applications d’investissement à faible coût, qui offrent des fonds négociés en bourse (FNB/ETF) diversifiés, ou encore par le fait de maximiser son REER (Régime enregistré d’épargne-retraite) ou son CELI (Compte d’épargne libre d’impôt) avec des produits prudents. Il est important de se rappeler que les marchés connaissent des hauts et des bas, et que l’objectif doit rester le gain à long terme, plutôt qu’un revenu immédiat et garanti.</p><p>Enfin, la vigilance est essentielle : consulter les conseils de l’Autorité des marchés financiers (AMF) pour éviter les fraudes, s’informer à travers des blogs de finances personnelles réputés, ou encore s’inspirer d’experts académiques qui vulgarisent la finance. À titre d’exemple, le professeur Maher Kooli, qui a contribué à la création de la salle des marchés de l’UQAM, incarne cette volonté de rapprocher la théorie financière de la pratique et de former les futurs experts capables de naviguer dans un environnement économique de plus en plus complexe.</p><h4>Conclusion</h4><p>En définitive, investir n’est pas une affaire d’élite, mais un savoir à démocratiser. La gestion de portefeuille, bien comprise, peut devenir un outil de résilience financière accessible à tous, un moyen concret d’affronter la vie chère et de préparer un avenir plus serein.</p><p>Ces conseils s’adressent aussi bien aux jeunes actifs, aux familles qu’aux retraités, chacun pouvant adapter sa stratégie à son horizon temporel et à sa tolérance au risque. Et pour ceux qui se sentent intimidés, rappelez-vous qu’il vaut mieux commencer petit que de ne jamais commencer : ouvrir un CELI et investir dans un fonds indiciel à faible frais peut être une première étape simple mais décisive vers une plus grande sécurité financière.</p>'
-        }
-      ,
+          content:
+            '<h4>Faire face à la vie chère au Canada</h4>'
+            + '<p>Au Canada, beaucoup de familles ressentent le poids de la vie chère : loyers élevés, factures qui augmentent, panier d’épicerie plus coûteux. Pour beaucoup, il devient difficile non seulement d’épargner, mais parfois même de maintenir un budget équilibré. Cette réalité alimente une inquiétude grandissante : comment protéger ses revenus, anticiper les imprévus et garder une marge de sécurité dans un contexte économique marqué par l’incertitude et la possibilité d’une récession ?</p>'
+            + '<p>Face à ces défis, de plus en plus de ménages s’intéressent aux placements financiers. Investir n’est plus perçu uniquement comme un outil de richesse à long terme réservé aux initiés, mais comme une réponse concrète aux pressions immédiates. Que ce soit pour arrondir ses fins de mois, préparer un projet futur ou simplement bâtir un fonds d’urgence, la gestion de portefeuille devient une démarche accessible, à la croisée de la théorie académique et de la vie quotidienne.</p>'
+            + '<h4>Les principes de base de la gestion de portefeuille</h4>'
+            + '<p>La gestion de portefeuille repose sur quelques principes essentiels. Le premier est la diversification, qui consiste à ne pas mettre tous ses œufs dans le même panier. Répartir ses investissements entre actions, obligations, fonds communs ou encore épargne-retraite permet de réduire les risques liés à l’incertitude des marchés.</p>'
+            + '<p>Le deuxième principe est l’équilibre rendement-risque : accepter qu’un placement plus risqué doit offrir en contrepartie un potentiel de rendement plus élevé, tandis qu’un placement plus sûr garantit davantage de stabilité. Ces idées, inspirées des modèles académiques comme le MEDAF, peuvent sembler abstraites, mais elles se traduisent très simplement dans la vie quotidienne : trouver un juste milieu entre sécurité et espoir de gains.</p>'
+            + '<p>Un ami me demandait récemment : « Comment faire des placements pour avoir d’autres sources de revenu ? » Sa question illustre une inquiétude largement partagée. La gestion de portefeuille peut justement apporter des réponses pratiques : bien pensée, elle aide à réduire les risques, à sécuriser une partie des revenus et à maintenir une stabilité financière, même en période de turbulence.</p>'
+            + '<h4>Des solutions accessibles et un savoir à démocratiser</h4>'
+            + '<p>Ainsi, la gestion de portefeuille n’est pas réservée aux experts de Bay Street. Elle concerne chacun de nous, car elle touche directement à notre capacité de faire face à la vie chère, de préparer l’avenir et de garder une marge de sécurité face aux imprévus économiques.</p>'
+            + '<p>Concrètement, cela peut passer par des applications d’investissement à faible coût, qui offrent des fonds négociés en bourse (FNB/ETF) diversifiés, ou encore par le fait de maximiser son REER (Régime enregistré d’épargne-retraite) ou son CELI (Compte d’épargne libre d’impôt) avec des produits prudents. Il est important de se rappeler que les marchés connaissent des hauts et des bas, et que l’objectif doit rester le gain à long terme, plutôt qu’un revenu immédiat et garanti.</p>'
+            + '<p>Enfin, la vigilance est essentielle : consulter les conseils de l’Autorité des marchés financiers (AMF) pour éviter les fraudes, s’informer à travers des blogs de finances personnelles réputés, ou encore s’inspirer d’experts académiques qui vulgarisent la finance. À titre d’exemple, le professeur Maher Kooli, qui a contribué à la création de la salle des marchés de l’UQAM, incarne cette volonté de rapprocher la théorie financière de la pratique et de former les futurs experts capables de naviguer dans un environnement économique de plus en plus complexe.</p>'
+            + '<h4>Conclusion</h4>'
+            + '<p>En définitive, investir n’est pas une affaire d’élite, mais un savoir à démocratiser. La gestion de portefeuille, bien comprise, peut devenir un outil de résilience financière accessible à tous, un moyen concret d’affronter la vie chère et de préparer un avenir plus serein.</p>'
+            + '<p>Ces conseils s’adressent aussi bien aux jeunes actifs, aux familles qu’aux retraités, chacun pouvant adapter sa stratégie à son horizon temporel et à sa tolérance au risque. Et pour ceux qui se sentent intimidés, rappelez-vous qu’il vaut mieux commencer petit que de ne jamais commencer : ouvrir un CELI et investir dans un fonds indiciel à faible frais peut être une première étape simple mais décisive vers une plus grande sécurité financière.</p>'
+        },
+        /* FR (15 juin 2025) */
+        {
+          lang: 'fr',
+          slug: 'redefinir-la-finance-rigueur-academique-dimension-humaine',
+          title: 'Redéfinir la finance : entre rigueur académique et dimension humaine',
+          date: '2025-06-15',
+          tags: ['Réflexion','Finance durable','ESG'],
+          content:
+            '<p>Pendant longtemps, la finance s’est construite autour d’une logique essentiellement quantitative, centrée sur les rendements, la performance et la maximisation des profits. Cette vision a permis des avancées notables en matière d’efficacité et d’allocation des ressources, mais elle a aussi écarté une question fondamentale : quel est l’impact humain et social des décisions financières ?</p>'
+            + '<p>Dans une discussion avec le professeur Maher Kooli, pionnier reconnu dans le domaine de la finance, il m’a rappelé que la dimension humaine demeure essentielle, même dans les approches les plus techniques. Cette réflexion rejoint la vision de Muhammad Yunus, prix Nobel de la paix et fondateur de la Grameen Bank, pour qui la finance doit être envisagée comme un instrument au service du bien commun, et non comme une fin en soi.</p>'
+            + '<h4>Vers une finance inclusive et durable</h4>'
+            + '<p>La finance moderne ne peut se réduire à la seule logique de rendement. Elle doit être comprise comme un levier de transformation sociale et environnementale. Concrètement, elle peut :</p>'
+            + '<ul><li>Favoriser l’accès à l’éducation, en réduisant les barrières financières.</li><li>Soutenir l’entrepreneuriat local, en permettant à des acteurs souvent exclus des circuits traditionnels de se développer.</li><li>Accélérer la transition écologique, en orientant les investissements vers des projets durables.</li><li>Renforcer la cohésion sociale, en encourageant les dynamiques de solidarité et d’inclusion.</li></ul>'
+            + '<h4>Redéfinir la notion de valeur</h4>'
+            + '<p>Ce changement de perspective exige également une redéfinition de la notion de valeur. La performance financière ne saurait être mesurée uniquement par les profits générés ou les rendements obtenus. Elle doit intégrer des critères sociaux et environnementaux.</p>'
+            + '<p>Par exemple, l’adoption des critères ESG (Environnement, Social, Gouvernance) illustre bien cette évolution : au-delà des résultats financiers, une entreprise ou un projet est désormais évalué en fonction de son impact sur l’environnement, de ses pratiques sociales et de la qualité de sa gouvernance.</p>'
+            + '<h4>Conclusion : pour une finance de sens</h4>'
+            + '<p>La véritable valeur de la finance ne réside pas seulement dans sa capacité à générer du profit, mais dans son rôle d’instrument au service de l’intérêt général. C’est cette finance que je m’engage à promouvoir à travers mes recherches : une finance rigoureuse dans ses méthodes, mais consciente de ses responsabilités sociales et environnementales.</p>'
+            + '<p>Loin de s’opposer à la logique économique traditionnelle, cette approche l’enrichit en redonnant un sens et une finalité aux pratiques financières. C’est dans cette articulation entre rigueur scientifique et responsabilité sociale que se dessine l’avenir d’une finance réellement durable.</p>'
+        },
+        /* EN (4 Aug 2025) */
         {
           lang: 'en',
           slug: 'portfolio-management-response-to-high-cost-of-living',
           title: 'Portfolio Management: A Response to the High Cost of Living',
           date: '2025-08-04',
           tags: ['Personal finance','Investing'],
-          excerpt: 'How portfolio management can help households cope with rising costs while building financial resilience.',
-          content: '<h4>Coping with the high cost of living in Canada</h4><p>Across Canada, many families feel the weight of rising costs: higher rents, growing bills, and a more expensive grocery basket. For many, it has become difficult not only to save, but sometimes even to keep a balanced budget. This reality fuels a growing concern: how do you protect your income, plan for the unexpected, and maintain a margin of safety in an uncertain economy with the possibility of a recession?</p><p>Faced with these challenges, more households are turning to financial investing. Investing is no longer seen only as a long‑term wealth tool for insiders, but as a practical response to immediate pressures. Whether it’s to ease monthly cash flow, prepare a future project, or simply build an emergency fund, portfolio management becomes accessible—at the intersection of academic theory and everyday life.</p><h4>Portfolio management basics</h4><p>Portfolio management rests on a few essential principles. The first is diversification—don’t put all your eggs in one basket. Spreading investments across equities, bonds, mutual funds, or retirement accounts helps reduce the risks associated with market uncertainty.</p><p>The second principle is the risk–return trade‑off: accepting that riskier investments should offer a higher potential return, while safer assets provide greater stability. These ideas, inspired by academic models such as the CAPM, can sound abstract, but in daily life they translate simply: find a sensible balance between safety and the hope of gains.</p><p>A friend recently asked me, “How can I invest to create additional sources of income?” It’s a widespread concern. Thoughtful portfolio management can provide practical answers: it helps reduce risks, secure part of one’s income, and maintain financial stability—even in turbulent times.</p><h4>Accessible solutions and democratized knowledge</h4><p>Portfolio management is not reserved for Bay Street experts. It concerns all of us, because it directly affects our ability to cope with the cost of living, prepare for the future, and keep a safety margin against economic shocks.</p><p>In practice, that can mean using low‑cost investing apps that offer diversified exchange‑traded funds (ETFs), or maximizing RRSPs and TFSAs with prudent products. It’s essential to remember that markets fluctuate, and the goal should remain long‑term growth rather than immediate, guaranteed income.</p><p>Vigilance is also key: consult guidance from your provincial securities regulator to avoid fraud, learn from reputable personal‑finance resources, and draw on academics who make finance understandable. For example, Professor Maher Kooli—who helped launch UQAM’s trading room—embodies the intent to bridge financial theory and practice and to train future experts for an increasingly complex environment.</p><h4>Conclusion</h4><p>Investing is not an elite pursuit—it’s knowledge to be democratized. Properly understood, portfolio management can become a practical tool of financial resilience, a concrete way to confront the high cost of living and prepare a more secure future.</p><p>These ideas speak to young professionals, families, and retirees alike: each can adapt a strategy to their time horizon and risk tolerance. And if you feel intimidated, remember it’s better to start small than never to start: opening a TFSA and investing in a low‑fee index fund can be a simple but decisive first step toward greater financial security.</p>'
+          content:
+            '<h4>Coping with the high cost of living in Canada</h4>'
+            + '<p>Across Canada, many families feel the weight of rising costs: higher rents, growing bills, and a more expensive grocery basket. For many, it has become difficult not only to save, but sometimes even to keep a balanced budget. This reality fuels a growing concern: how do you protect your income, plan for the unexpected, and maintain a margin of safety in an uncertain economy with the possibility of a recession?</p>'
+            + '<p>Faced with these challenges, more households are turning to financial investing. Investing is no longer seen only as a long-term wealth tool for insiders, but as a practical response to immediate pressures. Whether it’s to ease monthly cash flow, prepare a future project, or simply build an emergency fund, portfolio management becomes accessible—at the intersection of academic theory and everyday life.</p>'
+            + '<h4>Portfolio management basics</h4>'
+            + '<p>Portfolio management rests on a few essential principles. The first is diversification—don’t put all your eggs in one basket. Spreading investments across equities, bonds, mutual funds, or retirement accounts helps reduce the risks associated with market uncertainty.</p>'
+            + '<p>The second principle is the risk–return trade-off: accepting that riskier investments should offer a higher potential return, while safer assets provide greater stability. These ideas, inspired by academic models such as the CAPM, can sound abstract, but in daily life they translate simply: find a sensible balance between safety and the hope of gains.</p>'
+            + '<p>A friend recently asked me, “How can I invest to create additional sources of income?” It’s a widespread concern. Thoughtful portfolio management can provide practical answers: it helps reduce risks, secure part of one’s income, and maintain financial stability—even in turbulent times.</p>'
+            + '<h4>Accessible solutions and democratized knowledge</h4>'
+            + '<p>Portfolio management is not reserved for Bay Street experts. It concerns all of us, because it directly affects our ability to cope with the cost of living, prepare for the future, and keep a safety margin against economic shocks.</p>'
+            + '<p>In practice, that can mean using low-cost investing apps that offer diversified exchange-traded funds (ETFs), or maximizing RRSPs and TFSAs with prudent products. It’s essential to remember that markets fluctuate, and the goal should remain long-term growth rather than immediate, guaranteed income.</p>'
+            + '<p>Vigilance is also key: consult guidance from your provincial securities regulator to avoid fraud, learn from reputable personal-finance resources, and draw on academics who make finance understandable. For example, Professor Maher Kooli—who helped launch UQAM’s trading room—embodies the intent to bridge financial theory and practice and to train future experts for an increasingly complex environment.</p>'
+            + '<h4>Conclusion</h4>'
+            + '<p>Investing is not an elite pursuit—it’s knowledge to be democratized. Properly understood, portfolio management can become a practical tool of financial resilience, a concrete way to confront the high cost of living and prepare a more secure future.</p>'
+            + '<p>These ideas speak to young professionals, families, and retirees alike: each can adapt a strategy to their time horizon and risk tolerance. And if you feel intimidated, remember it’s better to start small than never to start: opening a TFSA and investing in a low-fee index fund can be a simple but decisive first step toward greater financial security.</p>'
         },
+        /* EN (15 Jun 2025) */
         {
           lang: 'en',
           slug: 'redefining-finance-rigor-and-human-dimension',
           title: 'Redefining Finance: Between Academic Rigor and the Human Dimension',
           date: '2025-06-15',
           tags: ['Reflection','Sustainable finance','ESG'],
-          excerpt: 'Why finance must reconnect with its human and social impact, and how rigorous research can guide a more inclusive and sustainable approach.',
-          content: '<p>For a long time, finance was built around a predominantly quantitative logic focused on returns, performance, and profit maximization. That lens delivered real advances in efficiency and resource allocation, but it also sidelined a fundamental question: what are the human and social consequences of financial decisions?</p><p>In a conversation with Professor Maher Kooli—a recognized pioneer in the field—he reminded me that the human dimension remains essential, even in the most technical approaches. This reflection echoes the vision of Muhammad Yunus, Nobel Peace Prize laureate and founder of Grameen Bank, who views finance as a means to serve the common good rather than an end in itself.</p><h4>Toward inclusive and sustainable finance</h4><p>Modern finance cannot be reduced to returns alone. It should be understood as a lever for social and environmental transformation. Concretely, it can: expand access to education, support local entrepreneurs, accelerate the ecological transition, and strengthen social cohesion.</p><h4>Redefining the notion of value</h4><p>This shift in perspective requires us to rethink “value.” Financial performance cannot be measured only by profits or returns. It must integrate social and environmental criteria. The widespread adoption of ESG (Environmental, Social, and Governance) indicators illustrates this evolution: beyond financial results, a firm or project is also evaluated by its environmental impact, social practices, and quality of governance.</p><h4>Conclusion: finance with purpose</h4><p>The true value of finance lies not only in its ability to generate profit, but in its role as a tool serving the public interest. This is the kind of finance I seek to advance through my research—methodologically rigorous, yet conscious of its social and environmental responsibilities.</p><p>Far from contradicting traditional economic logic, this approach enriches it by restoring meaning and direction to financial practice. It is in the articulation between scientific rigor and social responsibility that the future of truly sustainable finance takes shape.</p>'
+          content:
+            '<p>For a long time, finance was built around a predominantly quantitative logic focused on returns, performance, and profit maximization. That lens delivered real advances in efficiency and resource allocation, but it also sidelined a fundamental question: what are the human and social consequences of financial decisions?</p>'
+            + '<p>In a conversation with Professor Maher Kooli—a recognized pioneer in the field—he reminded me that the human dimension remains essential, even in the most technical approaches. This reflection echoes the vision of Muhammad Yunus, Nobel Peace Prize laureate and founder of Grameen Bank, who views finance as a means to serve the common good rather than an end in itself.</p>'
+            + '<h4>Toward inclusive and sustainable finance</h4>'
+            + '<p>Modern finance cannot be reduced to returns alone. It should be understood as a lever for social and environmental transformation. Concretely, it can: expand access to education, support local entrepreneurs, accelerate the ecological transition, and strengthen social cohesion.</p>'
+            + '<h4>Redefining the notion of value</h4>'
+            + '<p>This shift in perspective requires us to rethink “value.” Financial performance cannot be measured only by profits or returns. It must integrate social and environmental criteria. The widespread adoption of ESG (Environmental, Social, and Governance) indicators illustrates this evolution: beyond financial results, a firm or project is also evaluated by its environmental impact, social practices, and quality of governance.</p>'
+            + '<h4>Conclusion: finance with purpose</h4>'
+            + '<p>The true value of finance lies not only in its ability to generate profit, but in its role as a tool serving the public interest. This is the kind of finance I seek to advance through my research—methodologically rigorous, yet conscious of its social and environmental responsibilities.</p>'
+            + '<p>Far from contradicting traditional economic logic, this approach enriches it by restoring meaning and direction to financial practice. It is in the articulation between scientific rigor and social responsibility that the future of truly sustainable finance takes shape.</p>'
         }
       ];
 
-      function t(path) {
-        const lang = document.documentElement.lang || 'fr';
-        const parts = path.split('.');
-        let val = i18n[lang];
-        for (const p of parts) val = val && val[p];
-        return typeof val === 'string' ? val : '';
-      }
-
+      /* ---------- Utils ---------- */
       function formatDate(iso, lang) {
         const d = new Date(iso);
-        try {
-          return new Intl.DateTimeFormat((lang || document.documentElement.lang) === 'fr' ? 'fr-CA' : 'en-CA', { year: 'numeric', month: 'long', day: 'numeric' }).format(d);
-        } catch(e) { return iso; }
+        try { return new Intl.DateTimeFormat((lang || document.documentElement.lang) === 'fr' ? 'fr-CA' : 'en-CA', { year:'numeric', month:'long', day:'numeric' }).format(d); }
+        catch(e) { return iso; }
       }
-
       function stripTags(html){ return (html || '').replace(/<[^>]*>/g,''); }
       function getBlogSlugFromHash() {
         const h = location.hash.replace('#','');
@@ -323,38 +322,7 @@
         return null;
       }
 
-      function renderBlogList() {
-        const lang = document.documentElement.lang || 'fr';
-        const q = (document.getElementById('blog-search')?.value || '').toLowerCase();
-        const list = blogPosts.filter(p => p.lang === lang && (
-          (p.title||'').toLowerCase().includes(q) ||
-          (p.excerpt||'').toLowerCase().includes(q) ||
-          stripTags(p.content||'').toLowerCase().includes(q)
-        ));
-        const readMore = lang==='fr' ? 'Lire la suite' : 'Read more';
-        // Tri par date décroissante (plus récents en premier)
-        const sorted = [...list].sort((a, b) => new Date(b.date) - new Date(a.date));
-        const html = (sorted.length ? sorted.map(p => `
-          <article class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
-            <div class="flex items-center justify-between gap-3">
-              <a class="text-xl font-semibold text-slate-900 hover:underline" href="#blog/${p.slug}">${p.title}</a>
-              <span class="text-sm text-slate-500">${formatDate(p.date, lang)}</span>
-            </div>
-            ${p.tags && p.tags.length ? `<div class="mt-2 flex flex-wrap gap-2">${p.tags.map(tag => `<span class=\"px-2 py-0.5 text-xs rounded-full bg-sky-50 border border-sky-200 text-sky-900\">${tag}</span>`).join('')}</div>` : ''}
-            <p class="mt-3 text-slate-800">${p.excerpt || ''}</p>
-            <a class="mt-2 inline-block text-sky-800 hover:underline" href="#blog/${p.slug}">${readMore} →</a>
-          </article>
-        `).join('') : `<div class="text-center text-slate-500">${lang==='fr'?'Aucun article pour le moment.':'No posts yet.'}</div>`);
-        const listMount = document.getElementById('blog-list');
-        const detailMount = document.getElementById('blog-detail');
-        if (listMount) listMount.innerHTML = html;
-        if (detailMount) detailMount.classList.add('hidden');
-        const ctrl = document.getElementById('blog-controls');
-        if (ctrl) ctrl.classList.remove('hidden');
-        const search = document.getElementById('blog-search');
-        if (search) search.placeholder = lang==='fr' ? 'Rechercher dans le blog…' : 'Search the blog…';
-      }
-
+      /* ---------- Blog rendering ---------- */
       function renderBlogListTeaser() {
         const lang = document.documentElement.lang || 'fr';
         const q = (document.getElementById('blog-search')?.value || '').toLowerCase();
@@ -362,36 +330,44 @@
           (p.title||'').toLowerCase().includes(q) ||
           stripTags(p.content||'').toLowerCase().includes(q)
         ));
+        // Tri décroissant (plus récent d’abord)
+        const sorted = [...list].sort((a,b) => new Date(b.date) - new Date(a.date));
         const readMore = lang==='fr' ? 'Lire la suite' : 'Read more';
+
         const html = (sorted.length ? sorted.map(p => {
-          const html = p.content || '';
+          // Extrait = 1er paragraphe du contenu
           const tmp = document.createElement('div');
-          tmp.innerHTML = html;
+          tmp.innerHTML = p.content || '';
           const firstP = tmp.querySelector('p');
-          let full = (firstP ? firstP.textContent : stripTags(html)).trim();
+          let full = (firstP ? firstP.textContent : stripTags(p.content||'')).trim();
           let teaser = full.slice(0, 420);
           const cut = Math.max(teaser.lastIndexOf('. '), teaser.lastIndexOf(' '));
           if (full.length > 420 && cut > 60) teaser = teaser.slice(0, cut + 1) + ' …';
+
           return `
             <article class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
               <div class="flex items-center justify-between gap-3">
                 <a class="text-xl font-semibold text-slate-900 hover:underline" href="#blog/${p.slug}">${p.title}</a>
                 <span class="text-sm text-slate-500">${formatDate(p.date, lang)}</span>
               </div>
-              ${p.tags && p.tags.length ? `<div class=\"mt-2 flex flex-wrap gap-2\">${p.tags.map(tag => `<span class=\"px-2 py-0.5 text-xs rounded-full bg-sky-50 border border-sky-200 text-sky-900\">${tag}</span>`).join('')}</div>` : ''}
+              ${p.tags && p.tags.length ? `<div class="mt-2 flex flex-wrap gap-2">${p.tags.map(tag => `<span class="px-2 py-0.5 text-xs rounded-full bg-sky-50 border border-sky-200 text-sky-900">${tag}</span>`).join('')}</div>` : ''}
               <p class="mt-3 text-slate-800">${teaser}</p>
-              <a class="mt-2 inline-block text-sky-800 hover:underline" href="#blog/${p.slug}">${readMore} →</a>
+              <div class="mt-4 h-px bg-slate-200/80"></div>
+              <a class="mt-3 inline-block text-sky-800 hover:underline font-medium" href="#blog/${p.slug}">${readMore} →</a>
             </article>
           `;
         }).join('') : `<div class="text-center text-slate-500">${lang==='fr'?'Aucun article pour le moment.':'No posts yet.'}</div>`);
+
         const listMount = document.getElementById('blog-list');
         const detailMount = document.getElementById('blog-detail');
         if (listMount) listMount.innerHTML = html;
         if (detailMount) detailMount.classList.add('hidden');
+
         const ctrl = document.getElementById('blog-controls');
         if (ctrl) ctrl.classList.remove('hidden');
+
         const search = document.getElementById('blog-search');
-        if (search) search.placeholder = lang==='fr' ? 'Rechercher dans le blog…' : 'Search the blog…';
+        if (search) search.placeholder = (lang==='fr' ? 'Rechercher dans le blog…' : 'Search the blog…');
       }
 
       function renderBlogDetail(slug) {
@@ -401,19 +377,22 @@
         const detailMount = document.getElementById('blog-detail');
         if (!detailMount || !listMount) return;
         if (!post) { renderBlogListTeaser(); return; }
+
         listMount.innerHTML = '';
         const back = lang==='fr' ? '← Retour au blog' : '← Back to blog';
-        const tagsHtml = post.tags && post.tags.length ? `<div class="mt-2 flex flex-wrap gap-2">${post.tags.map(tag => `<span class=\"px-2 py-0.5 text-xs rounded-full bg-sky-50 border border-sky-200 text-sky-900\">${tag}</span>`).join('')}</div>` : '';
+        const tagsHtml = post.tags && post.tags.length ? `<div class="mt-2 flex flex-wrap gap-2">${post.tags.map(tag => `<span class="px-2 py-0.5 text-xs rounded-full bg-sky-50 border border-sky-200 text-sky-900">${tag}</span>`).join('')}</div>` : '';
+
         detailMount.innerHTML = `
-          <article class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+          <article class="p-6 md:p-8 rounded-2xl bg-white border border-slate-200 shadow-sm">
             <a class="text-sky-800 hover:underline" href="#blog">${back}</a>
-            <h3 class="mt-2 text-2xl md:text-3xl font-semibold text-slate-900">${post.title}</h3>
+            <h3 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">${post.title}</h3>
             <div class="mt-1 text-sm text-slate-500">${formatDate(post.date, lang)}</div>
             ${tagsHtml}
-            <div class=\"mt-4 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent\"></div>
-            <div class=\"blog-content mt-4 text-slate-800 leading-relaxed\">${post.content || ''}</div>
+            <div class="mt-4 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
+            <div class="blog-content mt-4 text-slate-800 leading-relaxed">${post.content || ''}</div>
           </article>`;
         detailMount.classList.remove('hidden');
+
         const ctrl = document.getElementById('blog-controls');
         if (ctrl) ctrl.classList.add('hidden');
       }
@@ -429,6 +408,7 @@
         }
       }
 
+      /* ---------- Navigation / Langue ---------- */
       const sections = ['home','research','teaching','cv','blog'];
 
       function setLang(lang) {
@@ -440,19 +420,14 @@
           if (typeof val === 'string') el.textContent = val;
         });
         localStorage.setItem('lang', lang);
+
         const frBtn = document.getElementById('btn-fr');
         const enBtn = document.getElementById('btn-en');
         if (frBtn && enBtn) {
-          if (lang === 'fr') {
-            frBtn.classList.add('bg-sky-700','text-white');
-            enBtn.classList.remove('bg-sky-700','text-white');
-          } else {
-            enBtn.classList.add('bg-sky-700','text-white');
-            frBtn.classList.remove('bg-sky-700','text-white');
-          }
+          if (lang === 'fr') { frBtn.classList.add('bg-sky-700','text-white'); enBtn.classList.remove('bg-sky-700','text-white'); }
+          else { enBtn.classList.add('bg-sky-700','text-white'); frBtn.classList.remove('bg-sky-700','text-white'); }
         }
-        // Re-rendre le blog si on change de langue
-        renderBlogRouter();
+        renderBlogRouter(); // re-rendre la liste/détail selon la langue
       }
 
       function showSection(id) {
@@ -464,9 +439,11 @@
         });
         const current = document.getElementById(id);
         if (current) current.classList.add('active');
+
         if (location.hash !== '#' + id && !location.hash.startsWith('#blog/')) {
           location.hash = id;
         }
+        // état visuel du menu
         document.querySelectorAll('.nav-link').forEach(a => {
           const target = a.getAttribute('href').slice(1);
           const active = target === id;
@@ -476,19 +453,21 @@
           a.classList.toggle('ring-1', active);
           a.classList.toggle('ring-sky-200', active);
         });
-        window.scrollTo({ top: 0 });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
-      // Hook nav links
+      // Navigation sur clic menu
       document.querySelectorAll('nav a[href^="#"]').forEach(a => {
         a.addEventListener('click', (e) => {
           e.preventDefault();
           const id = a.getAttribute('href').slice(1);
           showSection(id);
+          if (id === 'blog') renderBlogListTeaser();
         });
       });
 
-      // Init
+      // Init au chargement
       const savedLang = localStorage.getItem('lang') || 'fr';
       setLang(savedLang);
       const initialHash = location.hash.replace('#','');
@@ -502,15 +481,13 @@
         showSection('home');
       }
 
-      // Router hashchange (sections + blog)
+      // Router hashchange
       window.addEventListener('hashchange', () => {
         const h = location.hash.replace('#','');
         if (h.startsWith('blog/')) {
-          showSection('blog');
-          renderBlogDetail(h.slice(5));
+          showSection('blog'); renderBlogDetail(h.slice(5));
         } else if (h === 'blog') {
-          showSection('blog');
-          renderBlogListTeaser();
+          showSection('blog'); renderBlogListTeaser();
         } else if (sections.includes(h)) {
           showSection(h);
         }
@@ -518,5 +495,6 @@
     </script>
   </body>
 </html>
+
 
 
